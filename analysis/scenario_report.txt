@@ -1,0 +1,37 @@
+================================================================================
+SCENARIO COMPARISON REPORT
+================================================================================
+
+Configuration:
+  • Number of simulation runs per scenario: 5
+  • Intervention day: 10
+  • Influencers quarantined: 5
+
+================================================================================
+SCENARIO A: BASELINE (No Intervention)
+================================================================================
+
+Final Stress: 42.61 ± 1.16
+Peak Stress: 100.00 ± 0.00
+Burnout Count: 4.00 ± 1.41
+Total Stress AUC: 117701.55 ± 1315.69
+
+================================================================================
+SCENARIO B: INFLUENCER QUARANTINE
+================================================================================
+
+Final Stress: 40.09 ± 0.73
+Peak Stress: 100.00 ± 0.00
+Burnout Count: 3.60 ± 0.80
+Total Stress AUC: 113725.89 ± 983.84
+
+================================================================================
+INTERVENTION EFFECT
+================================================================================
+
+Stress Reduction: 2.52 points (5.9%)
+Burnout Reduction: 0.40 agents
+Total Stress AUC Reduction: 3.4%
+
+CONCLUSION:
+⚠ Modest stress reduction observed.

@@ -1,0 +1,48 @@
+================================================================================
+TEMPORAL ENGINE SPECIFICATION
+================================================================================
+
+SIMULATION MODEL: Agent-Based Stress Contagion
+--------------------------------------------------------------------------------
+Description: Daily update model where stress propagates through social
+             connections and influences digital usage behavior
+
+UPDATE EQUATIONS:
+--------------------------------------------------------------------------------
+Stress Update:
+  Stress_t = α * Usage_normalized_t + β * AvgNeighborStress_{t-1} * Susceptibility - γ * Resilience
+  where:
+    α = 0.6 (personal usage weight)
+    β = 0.3 (peer influence weight)
+    γ = 0.1 (resilience weight)
+
+Usage Update:
+  Usage_t = Usage_{t-1} * (1 + δ * Stress_{t-1}/100) * Variability * Noise
+  where:
+    δ = 0.02 (self-feedback rate)
+    Variability ~ agent-specific [0.8, 1.2]
+    Noise ~ N(1.0, 0.1) (daily randomness)
+
+PARAMETERS:
+--------------------------------------------------------------------------------
+  • Time horizon: 30 days
+  • Stress cap: 100.0
+  • Minimum usage: 30.0 min/day
+
+BASELINE METRICS:
+--------------------------------------------------------------------------------
+  total_records: 3100
+  n_agents: 100
+  n_days: 30
+  initial_stress_mean: 44.50
+  initial_stress_std: 34.74
+  final_stress_mean: 43.81
+  final_stress_std: 26.21
+  stress_change: -0.69
+  peak_stress_overall: 100.00
+  peak_stress_day: 0
+  peak_stress_value: 44.50
+  burnout_count_initial: 13
+  burnout_count_final: 6
+  total_stress_auc: 118863.68
+  avg_stress_auc_per_agent: 1188.64

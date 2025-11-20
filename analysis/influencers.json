@@ -1,0 +1,42 @@
+{
+  "top_k": 5,
+  "influencer_ids": [
+    32,
+    85,
+    78,
+    59,
+    66
+  ],
+  "influencers": [
+    {
+      "agent_id": 32,
+      "persona": "Heavy User",
+      "degree": 12,
+      "influence_score": 0.14009089109326966
+    },
+    {
+      "agent_id": 85,
+      "persona": "Minimalist",
+      "degree": 11,
+      "influence_score": 0.1326843709149999
+    },
+    {
+      "agent_id": 78,
+      "persona": "Moderate User",
+      "degree": 10,
+      "influence_score": 0.11881156839560587
+    },
+    {
+      "agent_id": 59,
+      "persona": "Digital Addict",
+      "degree": 10,
+      "influence_score": 0.10831073507966361
+    },
+    {
+      "agent_id": 66,
+      "persona": "Active User",
+      "degree": 11,
+      "influence_score": 0.10809364627383258
+    }
+  ]
+}

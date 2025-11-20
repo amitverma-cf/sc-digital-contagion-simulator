@@ -1,0 +1,102 @@
+{
+  "Minimalist": {
+    "cluster_id": 2,
+    "count": 136,
+    "percentage": 19.428571428571427,
+    "characteristics": {
+      "app_usage_mean": 60.4264705882353,
+      "app_usage_std": 17.247064099248107,
+      "screen_time_mean": 1.490441176470588,
+      "screen_time_std": 0.28070775008646565,
+      "battery_drain_mean": 454.9779411764706,
+      "battery_drain_std": 89.21447041834718,
+      "apps_installed_mean": 14.558823529411764,
+      "apps_installed_std": 2.900229124747708,
+      "data_usage_mean": 202.3235294117647,
+      "data_usage_std": 61.41912868310427,
+      "behavior_class_mode": 1,
+      "age_mean": 38.213235294117645,
+      "age_std": 11.283818691832677
+    }
+  },
+  "Moderate User": {
+    "cluster_id": 1,
+    "count": 146,
+    "percentage": 20.857142857142858,
+    "characteristics": {
+      "app_usage_mean": 131.97260273972603,
+      "app_usage_std": 25.468559442488665,
+      "screen_time_mean": 3.037671232876712,
+      "screen_time_std": 0.5977129297071958,
+      "battery_drain_mean": 883.8082191780821,
+      "battery_drain_std": 186.56566986816875,
+      "apps_installed_mean": 30.753424657534246,
+      "apps_installed_std": 5.644113984815926,
+      "data_usage_mean": 451.4178082191781,
+      "data_usage_std": 90.60050672381055,
+      "behavior_class_mode": 2,
+      "age_mean": 38.64383561643836,
+      "age_std": 11.595920641821087
+    }
+  },
+  "Active User": {
+    "cluster_id": 4,
+    "count": 143,
+    "percentage": 20.42857142857143,
+    "characteristics": {
+      "app_usage_mean": 235.3986013986014,
+      "app_usage_std": 34.05962871038517,
+      "screen_time_mean": 4.955944055944056,
+      "screen_time_std": 0.5912057835799335,
+      "battery_drain_mean": 1515.055944055944,
+      "battery_drain_std": 167.3238731871906,
+      "apps_installed_mean": 50.0,
+      "apps_installed_std": 5.50543905196757,
+      "data_usage_mean": 822.013986013986,
+      "data_usage_std": 114.22112147823748,
+      "behavior_class_mode": 3,
+      "age_mean": 38.67832167832168,
+      "age_std": 12.803829421998145
+    }
+  },
+  "Heavy User": {
+    "cluster_id": 3,
+    "count": 139,
+    "percentage": 19.857142857142858,
+    "characteristics": {
+      "app_usage_mean": 395.7482014388489,
+      "app_usage_std": 52.238318647785114,
+      "screen_time_mean": 6.909352517985611,
+      "screen_time_std": 0.5770856423432196,
+      "battery_drain_mean": 2105.8057553956833,
+      "battery_drain_std": 169.51092811156477,
+      "apps_installed_mean": 69.92086330935251,
+      "apps_installed_std": 5.420124534910051,
+      "data_usage_mean": 1232.230215827338,
+      "data_usage_std": 146.1922655296022,
+      "behavior_class_mode": 4,
+      "age_mean": 38.67625899280576,
+      "age_std": 12.652098312159632
+    }
+  },
+  "Digital Addict": {
+    "cluster_id": 0,
+    "count": 136,
+    "percentage": 19.428571428571427,
+    "characteristics": {
+      "app_usage_mean": 541.4191176470588,
+      "app_usage_std": 31.13710544530404,
+      "screen_time_mean": 10.11470588235294,
+      "screen_time_std": 1.1347396119498536,
+      "battery_drain_mean": 2701.014705882353,
+      "battery_drain_std": 176.91278392323267,
+      "apps_installed_mean": 89.25,
+      "apps_installed_std": 5.483645718896359,
+      "data_usage_mean": 1974.7720588235295,
+      "data_usage_std": 297.4551062774762,
+      "behavior_class_mode": 5,
+      "age_mean": 38.1764705882353,
+      "age_std": 11.794463455016558
+    }
+  }
+}

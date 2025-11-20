@@ -1,0 +1,17 @@
+{
+  "n_nodes": 100,
+  "n_edges": 270,
+  "density": 0.05454545454545454,
+  "avg_degree": 5.4,
+  "std_degree": 2.195449840010015,
+  "min_degree": 2.0,
+  "max_degree": 12.0,
+  "is_connected": true,
+  "n_components": 1,
+  "largest_component_size": 100,
+  "avg_clustering": 0.08037157287157287,
+  "transitivity": 0.08187543736878937,
+  "diameter": 6,
+  "avg_shortest_path": 2.9242424242424243,
+  "assortativity_persona": 0.42609241062094916
+}

@@ -1,0 +1,32 @@
+================================================================================
+NETWORK TOPOLOGY SPECIFICATION
+================================================================================
+
+NETWORK MODEL: Homophily-Based Random Graph
+--------------------------------------------------------------------------------
+Description: Stochastic graph where connection probability depends on
+             persona similarity (homophily principle)
+
+PARAMETERS:
+  • Same persona connection probability: 0.15
+  • Different persona connection probability: 0.03
+  • Bridge connection probability: 0.01
+  • Degree constraints: [2, 15]
+
+NETWORK METRICS:
+--------------------------------------------------------------------------------
+  n_nodes: 100
+  n_edges: 270
+  density: 0.0545
+  avg_degree: 5.4000
+  std_degree: 2.1954
+  min_degree: 2.0000
+  max_degree: 12.0000
+  is_connected: True
+  n_components: 1
+  largest_component_size: 100
+  avg_clustering: 0.0804
+  transitivity: 0.0819
+  diameter: 6
+  avg_shortest_path: 2.9242
+  assortativity_persona: 0.4261

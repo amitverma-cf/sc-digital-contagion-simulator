@@ -1,0 +1,16 @@
+[project]
+name = "sc-digital-contagion-simulator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2.0",
+    "numpy>=1.26.0",
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "scikit-learn>=1.4.0",
+    "networkx>=3.2.0",
+    "scipy>=1.12.0",
+    "tqdm>=4.66.0",
+]
