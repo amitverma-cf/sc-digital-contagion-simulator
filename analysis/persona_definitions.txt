@@ -9,13 +9,13 @@ Population: 136 users (19.4%)
 Cluster ID: 2
 
 Behavioral Characteristics:
-  • Screen Time: 1.5 ± 0.3 hours/day
-  • App Usage: 60 ± 17 min/day
-  • Battery Drain: 455 ± 89 mAh/day
-  • Apps Installed: 15 ± 3
-  • Data Usage: 202 ± 61 MB/day
-  • Typical Behavior Class: 1
-  • Average Age: 38.2 ± 11.3 years
+  - Screen Time: 1.5 - 0.3 hours/day
+  - App Usage: 60 - 17 min/day
+  - Battery Drain: 455 - 89 mAh/day
+  - Apps Installed: 15 - 3
+  - Data Usage: 202 - 61 MB/day
+  - Typical Behavior Class: 1
+  - Average Age: 38.2 - 11.3 years
 
 MODERATE USER
 --------------------------------------------------------------------------------
@@ -23,13 +23,13 @@ Population: 146 users (20.9%)
 Cluster ID: 1
 
 Behavioral Characteristics:
-  • Screen Time: 3.0 ± 0.6 hours/day
-  • App Usage: 132 ± 25 min/day
-  • Battery Drain: 884 ± 187 mAh/day
-  • Apps Installed: 31 ± 6
-  • Data Usage: 451 ± 91 MB/day
-  • Typical Behavior Class: 2
-  • Average Age: 38.6 ± 11.6 years
+  - Screen Time: 3.0 - 0.6 hours/day
+  - App Usage: 132 - 25 min/day
+  - Battery Drain: 884 - 187 mAh/day
+  - Apps Installed: 31 - 6
+  - Data Usage: 451 - 91 MB/day
+  - Typical Behavior Class: 2
+  - Average Age: 38.6 - 11.6 years
 
 ACTIVE USER
 --------------------------------------------------------------------------------
@@ -37,13 +37,13 @@ Population: 143 users (20.4%)
 Cluster ID: 4
 
 Behavioral Characteristics:
-  • Screen Time: 5.0 ± 0.6 hours/day
-  • App Usage: 235 ± 34 min/day
-  • Battery Drain: 1515 ± 167 mAh/day
-  • Apps Installed: 50 ± 6
-  • Data Usage: 822 ± 114 MB/day
-  • Typical Behavior Class: 3
-  • Average Age: 38.7 ± 12.8 years
+  - Screen Time: 5.0 - 0.6 hours/day
+  - App Usage: 235 - 34 min/day
+  - Battery Drain: 1515 - 167 mAh/day
+  - Apps Installed: 50 - 6
+  - Data Usage: 822 - 114 MB/day
+  - Typical Behavior Class: 3
+  - Average Age: 38.7 - 12.8 years
 
 HEAVY USER
 --------------------------------------------------------------------------------
@@ -51,13 +51,13 @@ Population: 139 users (19.9%)
 Cluster ID: 3
 
 Behavioral Characteristics:
-  • Screen Time: 6.9 ± 0.6 hours/day
-  • App Usage: 396 ± 52 min/day
-  • Battery Drain: 2106 ± 170 mAh/day
-  • Apps Installed: 70 ± 5
-  • Data Usage: 1232 ± 146 MB/day
-  • Typical Behavior Class: 4
-  • Average Age: 38.7 ± 12.7 years
+  - Screen Time: 6.9 - 0.6 hours/day
+  - App Usage: 396 - 52 min/day
+  - Battery Drain: 2106 - 170 mAh/day
+  - Apps Installed: 70 - 5
+  - Data Usage: 1232 - 146 MB/day
+  - Typical Behavior Class: 4
+  - Average Age: 38.7 - 12.7 years
 
 DIGITAL ADDICT
 --------------------------------------------------------------------------------
@@ -65,10 +65,10 @@ Population: 136 users (19.4%)
 Cluster ID: 0
 
 Behavioral Characteristics:
-  • Screen Time: 10.1 ± 1.1 hours/day
-  • App Usage: 541 ± 31 min/day
-  • Battery Drain: 2701 ± 177 mAh/day
-  • Apps Installed: 89 ± 5
-  • Data Usage: 1975 ± 297 MB/day
-  • Typical Behavior Class: 5
-  • Average Age: 38.2 ± 11.8 years
+  - Screen Time: 10.1 - 1.1 hours/day
+  - App Usage: 541 - 31 min/day
+  - Battery Drain: 2701 - 177 mAh/day
+  - Apps Installed: 89 - 5
+  - Data Usage: 1975 - 297 MB/day
+  - Typical Behavior Class: 5
+  - Average Age: 38.2 - 11.8 years
