@@ -1,0 +1,58 @@
+================================================================================
+DIGITAL DETOX DAY: SIMULATION REPORT
+================================================================================
+
+SCENARIO:
+  On Day 10, ALL 100 agents reduce their social media usage by 50%
+  (vs. original intervention: only 5 influencers reduce usage)
+
+RESEARCH QUESTION:
+  Does a collective network-wide 'digital detox day' produce better
+  outcomes than targeted intervention on high-degree influencers?
+
+METHODOLOGY:
+  - 100 agents with same network topology (seed=42)
+  - 5 simulation runs (seeds 42-46)
+  - Day 10: ALL agents reduce app_usage_time by 50%
+  - No transmission dampening (agents still influence each other)
+
+================================================================================
+RESULTS
+================================================================================
+
+Final Network Stress: 30.20 ± 0.88
+Burnout Count:        0.60 ± 0.55
+Total Stress AUC:     83205 ± 1021
+
+================================================================================
+COMPARISON WITH OTHER SCENARIOS
+================================================================================
+
+Scenario                       Final Stress    Burnout Count  
+------------------------------ --------------- ---------------
+Baseline (no intervention)      42.61           5.80
+Target 5 Influencers            40.09           5.40
+Digital Detox Day (ALL 100)     30.20           0.60
+
+IMPROVEMENT ANALYSIS:
+
+Digital Detox Day vs Baseline:
+  Stress reduction:     +29.1%
+  Burnout reduction:    +5.20 cases
+
+Digital Detox Day vs Targeted Intervention (5 influencers):
+  Stress difference:    +24.7%
+  Burnout difference:   +4.80 cases
+
+================================================================================
+CONCLUSION
+================================================================================
+
+✓ DIGITAL DETOX DAY IS MORE EFFECTIVE
+
+  A network-wide intervention (100 agents @ 50% reduction) produces
+  better outcomes than targeted intervention (5 influencers).
+
+  IMPLICATION: Collective action beats targeted intervention.
+               Mobilizing the entire network is more effective than
+               relying on influencer-driven cascades.

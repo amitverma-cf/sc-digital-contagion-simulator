@@ -1,0 +1,20 @@
+{
+  "baseline": {
+    "final_stress": 42.60928998396028,
+    "burnout_count": 5.8
+  },
+  "targeted_intervention": {
+    "final_stress": 40.0857796163872,
+    "burnout_count": 5.4
+  },
+  "digital_detox_day": {
+    "final_stress": 30.20181990475293,
+    "burnout_count": 0.6
+  },
+  "improvements": {
+    "detox_vs_baseline_stress_pct": 29.119166463177354,
+    "detox_vs_baseline_burnout": 5.2,
+    "detox_vs_intervention_stress_pct": 24.657022530737244,
+    "detox_vs_intervention_burnout": 4.800000000000001
+  }
+}
