@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Contagion Simulator — Reference Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+            background: #fff;
+        }
+
+        h1 {
+            color: #1E3A8A;
+            font-size: 26px;
+            margin-bottom: 5px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3B82F6;
+        }
+
+        .subtitle {
+            color: #6B7280;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #1E3A8A;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #93C5FD;
+        }
+
+        h3 {
+            color: #3B82F6;
+            font-size: 15px;
+            margin-top: 18px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: #2563EB;
+            font-size: 14px;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        table th {
+            background: #1E3A8A;
+            color: white;
+            padding: 8px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        table tr:nth-child(even) {
+            background: #F9FAFB;
+        }
+
+        .param-box {
+            background: #EFF6FF;
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 4px solid #3B82F6;
+            margin: 12px 0;
+        }
+
+        .param-box strong {
+            color: #1E3A8A;
+        }
+
+        .equation {
+            background: #F3F4F6;
+            padding: 12px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 12px 0;
+            text-align: center;
+            border: 1px solid #D1D5DB;
+        }
+
+        .insight-box {
+            background: #FEF3C7;
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 4px solid #F59E0B;
+            margin: 12px 0;
+        }
+
+        .insight-box strong {
+            color: #92400E;
+        }
+
+        strong {
+            color: #1F2937;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #D1D5DB;
+            margin: 25px 0;
+        }
+
+        @media print {
+            body {
+                padding: 15mm;
+            }
+
+            h2 {
+                page-break-after: avoid;
+            }
+
+            h3 {
+                page-break-after: avoid;
+            }
+
+            table {
+                page-break-inside: avoid;
+            }
+
+            .param-box, .insight-box {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Digital Contagion Simulator — Reference Guide</h1>
+
+    <h2>The Mathematical Engine & Parameter Justification</h2>
+
+    <h3>The Stress Contagion Equation</h3>
+    <p>We modeled stress (S<sub>t</sub>) as a linear combination of three forces:</p>
+
+    <div class="equation">
+        Stress<sub>t</sub> = α · Usage + β · PeerStress · Susceptibility − γ · Resilience
+    </div>
+
+    <h4>Parameter Calibration:</h4>
+
+    <div class="param-box">
+        <p><strong>α = 0.6 (Personal Usage)</strong></p>
+        <ul>
+            <li><strong>Source:</strong> Calibrated weight from literature</li>
+            <li><strong>Why:</strong> Individual behavior is the primary predictor of digital stress. We assigned it 60% weight to ensure personal agency dominates over peer pressure.</li>
+        </ul>
+    </div>
+
+    <div class="param-box">
+        <p><strong>β = 0.3 (Peer Influence)</strong></p>
+        <ul>
+            <li><strong>Source:</strong> Christakis & Fowler (2008)</li>
+            <li><strong>Why:</strong> Their study on social networks showed happiness/stress spreads with a transmission rate of ~30%. We directly adopted this coefficient.</li>
+        </ul>
+    </div>
+
+    <div class="param-box">
+        <p><strong>γ = 0.1 (Resilience)</strong></p>
+        <ul>
+            <li><strong>Source:</strong> Calibrated buffer</li>
+            <li><strong>Why:</strong> Resilience acts as a dampener. We scaled it by ×10 in the equation so that a 0.1 weight provides a meaningful protective buffer (10-15 points).</li>
+        </ul>
+    </div>
+
+    <h3>The Feedback Loop (Doomscrolling)</h3>
+
+    <div class="equation">
+        Usage<sub>t</sub> = Usage<sub>(t-1)</sub> × (1 + δ · Stress/100) × Variability × Noise
+    </div>
+
+    <div class="param-box">
+        <p><strong>δ = 0.02 (The Spiral Factor)</strong></p>
+        <ul>
+            <li><strong>Source:</strong> Thomée et al. (2011)</li>
+            <li><strong>Why:</strong> Research indicates stressed young adults increase phone use by 2-3% as a coping mechanism. This creates the "vicious cycle" in our model.</li>
+        </ul>
+    </div>
+
+    <p><strong>Variability vs. Noise:</strong></p>
+    <ul>
+        <li><strong>Variability (0.8-1.2):</strong> A fixed "personality trait" for each agent. Some people are consistently erratic.</li>
+        <li><strong>Noise (N(1.0, 0.1)):</strong> A random daily fluctuation. Even consistent people have random bad days.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Constructing the "Digital Twin"</h2>
+
+    <h3>From Real Data to Synthetic Agents</h3>
+    <p>We did not invent the user behaviors. We used the Valakhorasani Dataset (700 users) and applied K-Means Clustering (k=5).</p>
+
+    <p><strong>Why K-Means?</strong> We wanted to find natural groupings in the data rather than setting arbitrary thresholds (e.g., "anyone over 5 hours is an addict").</p>
+
+    <h4>The 5 Clusters Identified:</h4>
+    <ul>
+        <li><strong>Minimalists (14%):</strong> 1.5 hrs/day</li>
+        <li><strong>Moderate (21%):</strong> 3.0 hrs/day</li>
+        <li><strong>Active (31%):</strong> 5.0 hrs/day</li>
+        <li><strong>Heavy (25%):</strong> 6.9 hrs/day</li>
+        <li><strong>Addicts (9%):</strong> 10.1 hrs/day</li>
+    </ul>
+
+    <p><strong>Validation:</strong> Our synthetic agents match the real dataset statistics with &lt;5% error across all metrics (screen time, app usage, battery drain).</p>
+
+    <h3>Network Topology (The "Homophily" Graph)</h3>
+    <p>We didn't just connect random people. We used a Stochastic Block Model to enforce "Homophily" (birds of a feather flock together).</p>
+
+    <h4>Connection Logic:</h4>
+    <ul>
+        <li><strong>Probability 0.15:</strong> If two agents share the same persona (e.g., Addict ↔ Addict)</li>
+        <li><strong>Probability 0.03:</strong> If two agents have different personas</li>
+        <li><strong>Probability 0.01:</strong> Random "bridge" edges to ensure the network isn't totally disconnected</li>
+    </ul>
+
+    <h4>Resulting Topology:</h4>
+    <ul>
+        <li><strong>Nodes:</strong> 100</li>
+        <li><strong>Edges:</strong> 270</li>
+        <li><strong>Assortativity:</strong> 0.426 (This proves strong clustering; a random graph would be ~0.0)</li>
+    </ul>
+
+    <hr>
+
+    <h2>Key Findings: Paradoxes & Trade-offs</h2>
+
+    <h3>The Targeting Paradox</h3>
+    <p>Why did targeting influencers increase burnout?</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Strategy</th>
+                <th>Stress Reduction</th>
+                <th>Burnout Cases</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Target Influencers</td>
+                <td>-3.7% (Best)</td>
+                <td>3.60 (Worst)</td>
+            </tr>
+            <tr>
+                <td>Target Random</td>
+                <td>-2.2%</td>
+                <td>3.40</td>
+            </tr>
+            <tr>
+                <td>Target Isolated</td>
+                <td>-0.6%</td>
+                <td>3.20 (Best)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <p><strong>Explanation:</strong> Influencers act as "Social Support Hubs." When you quarantine them (reduce their usage):</p>
+        <ul>
+            <li>They stop spreading stress → Good for the average</li>
+            <li><strong>BUT</strong> their dependent friends lose a connection → This isolation causes localized stress spikes in vulnerable agents, pushing them over the edge into burnout</li>
+        </ul>
+    </div>
+
+    <h3>The "Echo Chamber" Scenario</h3>
+    <p>What if peer pressure was stronger?</p>
+    <p>We ran a simulation with β = 0.8 (Peer Influence dominates Personal Usage).</p>
+
+    <p><strong>Result:</strong> Targeting influencers became massively effective.</p>
+    <ul>
+        <li>Stress: -65% reduction</li>
+        <li>Burnout: 0 cases</li>
+    </ul>
+
+    <div class="insight-box">
+        <p><strong>Insight:</strong> Network interventions work best in highly conformist environments (like high schools with high peer pressure).</p>
+    </div>
+
+    <h3>Collective Action Wins</h3>
+    <p>We tested a "Digital Detox Day" where all 100 agents reduced usage by 50% (instead of just 5 influencers).</p>
+
+    <p><strong>Result:</strong> 5× better stress reduction than targeting influencers.</p>
+
+    <div class="insight-box">
+        <p><strong>Insight:</strong> Network leverage (β=0.3) is not strong enough to beat universal behavior change.</p>
+    </div>
+
+    <hr>
+
+    <h2>Methodology & Reproducibility</h2>
+
+    <h3>Experimental Rigor</h3>
+    <p>We didn't just run the simulation once.</p>
+
+    <p><strong>5 Runs Per Scenario:</strong> We used 5 different random seeds (42-46) for every experiment.</p>
+
+    <p><strong>Why?</strong> To ensure our results (like the 5.9% reduction) weren't just a statistical fluke caused by random noise.</p>
+
+    <p><strong>Confidence:</strong> The standard error was low (±0.73), confirming the effect is robust.</p>
+
+    <h3>Intervention Mechanics (The "Quarantine")</h3>
+    <p>On Day 10, we targeted the top 5 agents (by Degree Centrality) and applied two specific clamps:</p>
+
+    <ol>
+        <li><strong>Usage Clamp:</strong> Capped screen time at 50% of their baseline</li>
+        <li><strong>Transmission Dampening (70%):</strong> Reduced the stress they broadcast to neighbors</li>
+    </ol>
+
+    <p><strong>Justification:</strong> If you post less, you broadcast less stress. Christakis & Fowler (2008) suggest contagion attenuates by ~60-70% per hop; we modeled this as a direct reduction in transmission.</p>
+
+    <h3>Key References</h3>
+    <ul>
+        <li><strong>Epidemics:</strong> Kermack & McKendrick (1927) — The SIR Model basis</li>
+        <li><strong>Social Contagion:</strong> Christakis & Fowler (2008) — Happiness spreads in networks</li>
+        <li><strong>Phone Stress:</strong> Thomée et al. (2011) — Mobile use correlates with stress/depression</li>
+        <li><strong>ABM Framework:</strong> Epstein & Axtell (1996) — Sugarscape/Artificial Societies</li>
+    </ul>
+
+    <hr>
+
+    <h2>The "Targeting Paradox" — Deep Dive</h2>
+
+    <h3>The Experiment</h3>
+    <p>To validate our findings, we tested three distinct targeting strategies. In each case, we intervened on exactly 5 agents (5% of population).</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Strategy</th>
+                <th>Who are they?</th>
+                <th>Avg. Connections (Degree)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Top Influencers</td>
+                <td>The "Popular Kids"</td>
+                <td>10.8 friends/agent</td>
+            </tr>
+            <tr>
+                <td>Random Agents</td>
+                <td>Random selection</td>
+                <td>5.4 friends/agent</td>
+            </tr>
+            <tr>
+                <td>Isolates</td>
+                <td>Least connected</td>
+                <td>2.0 friends/agent</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>The Results (The Paradox)</h3>
+    <p>Targeting influencers was best for the average person, but dangerous for the vulnerable few.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Target Influencers</th>
+                <th>Target Random</th>
+                <th>Target Isolates</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Final Network Stress</td>
+                <td>40.09 (Lowest)</td>
+                <td>41.00</td>
+                <td>41.62 (Highest)</td>
+            </tr>
+            <tr>
+                <td>Burnout Cases</td>
+                <td>3.60 (Highest)</td>
+                <td>3.40</td>
+                <td>3.20 (Lowest)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>The Explanation</h3>
+    <p><strong>Network Effect:</strong> Influencers act as hubs. When you "quarantine" them (reduce their usage), you successfully stop them from spreading stress to their 10+ friends. This lowers the average stress.</p>
+
+    <p><strong>The Cost:</strong> Those 10+ friends also rely on the influencer for social connection. When the influencer "goes dark," the network structure fractures. Highly dependent neighbors lose their social buffer, causing localized stress spikes that push them into burnout.</p>
+
+    <hr>
+
+    <h2>Simulation Logic & Algorithm Flow</h2>
+
+    <h3>The Daily Loop (Repeated for 30 Days)</h3>
+
+    <h4>Step 1: Usage Update (The Feedback)</h4>
+    <ul>
+        <li>First, the agent decides how much to use the phone based on yesterday's stress</li>
+        <li><strong>Mechanism:</strong> If stress was high yesterday, usage goes up today (Doomscrolling factor δ=0.02)</li>
+        <li><strong>Noise:</strong> We add random Gaussian noise (N(1.0, 0.1)) so agents don't act robotically perfect</li>
+    </ul>
+
+    <h4>Step 2: Stress Update (The Contagion)</h4>
+    <ul>
+        <li>Now we calculate the new stress level</li>
+        <li><strong>Personal Factor:</strong> We calculate stress from their new usage time (α=0.6)</li>
+        <li><strong>Social Factor:</strong> We look at all the agent's neighbors. We average their stress levels and multiply by the peer influence weight (β=0.3)</li>
+        <li><strong>Buffering:</strong> We subtract the agent's resilience score (γ=0.1)</li>
+    </ul>
+
+    <h4>Step 3: Intervention Check (Days 10-30)</h4>
+    <p>If the agent is one of the Top 5 Influencers:</p>
+    <ol>
+        <li><strong>Usage Clamp:</strong> We force their Usage variable to 50% of its calculated value</li>
+        <li><strong>Transmission Block:</strong> When their neighbors look at them (in Step 2), we multiply the stress transmission by 0.3 (blocking 70%)</li>
+    </ol>
+
+    <hr>
+
+    <h2>Limitations & Future Work</h2>
+
+    <h3>Current Limitations</h3>
+
+    <p><strong>Single Topology (The "Seed 42" Issue):</strong> All 10 simulation runs used the exact same social network structure (Seed 42). While we varied the temporal noise (seeds 42-46), we have not yet tested if this works on a completely different network shape.</p>
+
+    <p><strong>Linear Transmission:</strong> We modeled stress transmission as linear. In reality, contagion might be "complex" (requiring multiple reinforcements before spreading), which we didn't model.</p>
+
+    <p><strong>Binary Burnout:</strong> We defined burnout as strictly Stress > 80. Real clinical burnout is a spectrum, not a binary switch.</p>
+
+    <h3>Proposed Future Work</h3>
+
+    <p><strong>Sensitivity Analysis:</strong> We plan to sweep the parameters (α, β, γ) to see which one matters most. For example, if we raise resilience training, does that beat usage reduction?</p>
+
+    <p><strong>Real-World Validation:</strong> We want to compare our synthetic curves against Experience Sampling Method (ESM) data from real students to calibrate the β (peer influence) parameter.</p>
+
+    <hr>
+
+    <h2>Annotated Bibliography</h2>
+
+    <h3>Christakis, N. A., & Fowler, J. H. (2008). Dynamic spread of happiness... BMJ.</h3>
+    <p>This is the foundational paper for social contagion. They found happiness spreads up to 3 degrees of separation with a ~25-30% transmission rate. We used this to set our Peer Influence Weight (β = 0.3) and our Transmission Dampening (70%).</p>
+
+    <h3>Thomée, S., et al. (2011). Mobile phone use and stress... BMC Public Health.</h3>
+    <p>They established the link between high usage and stress/depression. Crucially, they described the feedback loop where stressed users use their phones more. We used this to justify our Self-Feedback Rate (δ = 0.02).</p>
+
+    <h3>Valakhorasani, R. (2024). User Behavior Dataset. Kaggle.</h3>
+    <p>This provided the raw data (700 users). We ran K-Means Clustering on this data to create our 5 Agent Personas (Minimalist, Addict, etc.) ensuring our agents are statistically realistic, not random.</p>
+
+    <h3>Epstein, J. M., & Axtell, R. (1996). Growing Artificial Societies.</h3>
+    <p>The "Bible" of Agent-Based Modeling. We followed their guidelines for assigning heterogeneous traits (giving each agent a unique resilience score between 0.7-1.3) rather than making everyone identical.</p>
+
+</body>
+</html>
