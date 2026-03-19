@@ -236,11 +236,12 @@ params_low_beta['beta'] = 0.3
 params_high_beta = DEFAULT_PARAMS.copy()
 params_high_beta['beta'] = 0.8
 
+# Run WITHOUT intervention to show pure echo chamber effect
 engine3 = TemporalEngine(agents_df, network, params=params_low_beta, random_seed=42)
-results_beta_low = engine3.simulate(intervention_day=10, intervention_agents=top_5_influencers)
+results_beta_low = engine3.simulate(intervention_day=None, intervention_agents=None)
 
 engine4 = TemporalEngine(agents_df, network, params=params_high_beta, random_seed=42)
-results_beta_high = engine4.simulate(intervention_day=10, intervention_agents=top_5_influencers)
+results_beta_high = engine4.simulate(intervention_day=None, intervention_agents=None)
 
 # Plot
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 3))
@@ -248,9 +249,9 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 3))
 stress_low = results_beta_low.groupby('day')['stress'].mean()
 stress_high = results_beta_high.groupby('day')['stress'].mean()
 
-ax1.plot(stress_low.index+1, stress_low, label='β=0.3 (Baseline)', color='#6B7280', linewidth=2)
+ax1.plot(stress_low.index+1, stress_low, label='β=0.3 (Low Influence)', color='#6B7280', linewidth=2)
 ax1.plot(stress_high.index+1, stress_high, label='β=0.8 (Echo Chamber)', color='#DC2626', linewidth=2)
-ax1.axvline(x=10, color='red', linestyle=':', alpha=0.5, linewidth=1)
+# Remove intervention line since no intervention is applied
 ax1.set_xlabel('Day', fontsize=9)
 ax1.set_ylabel('Mean Stress', fontsize=9)
 ax1.set_title('Echo Chamber: Peer Influence Impact', fontsize=10, fontweight='bold')
@@ -263,10 +264,10 @@ burnout_high = results_beta_high.groupby('day').apply(lambda x: (x['stress'] > 8
 
 ax2.plot(burnout_low.index+1, burnout_low, label='β=0.3', color='#6B7280', linewidth=2)
 ax2.plot(burnout_high.index+1, burnout_high, label='β=0.8', color='#DC2626', linewidth=2)
-ax2.axvline(x=10, color='red', linestyle=':', alpha=0.5, linewidth=1)
+# Remove intervention line since no intervention is applied
 ax2.set_xlabel('Day', fontsize=9)
 ax2.set_ylabel('Burnout Count', fontsize=9)
-ax2.set_title('Echo Chamber: Burnout Elimination', fontsize=10, fontweight='bold')
+ax2.set_title('Echo Chamber: Burnout Cascade', fontsize=10, fontweight='bold')
 ax2.legend(fontsize=7)
 ax2.grid(True, alpha=0.3)
 ax2.tick_params(labelsize=8)

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
             width: 297mm;
             height: 420mm;
             background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -40,14 +41,14 @@
         }
 
         .title-banner h1 {
-            font-size: 28px;
+            font-size: 40px;
             font-weight: 700;
             margin-bottom: 3px;
             line-height: 1.1;
         }
 
         .title-banner .subtitle {
-            font-size: 11px;
+            font-size: 10px;
             opacity: 0.95;
             margin-bottom: 4px;
         }
@@ -56,19 +57,19 @@
             font-size: 8px;
             opacity: 0.9;
             margin-top: 4px;
-            border-top: 1px solid rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
             padding-top: 4px;
         }
 
         .title-banner .team-name {
-            font-weight: 700;
-            font-size: 11px;
+            /* font-weight: 700; */
+            font-size: 16px;
             margin-bottom: 3px;
             letter-spacing: 0.3px;
         }
 
         .title-banner .team-members {
-            font-size: 8.5px;
+            font-size: 10px;
             line-height: 1.4;
         }
 
@@ -99,7 +100,7 @@
         }
 
         .viz-box h3 {
-            font-size: 13px;
+            font-size: 12px;
             color: #1F2937;
             margin-bottom: 8px;
             text-align: center;
@@ -114,7 +115,7 @@
         }
 
         .viz-caption {
-            font-size: 9px;
+            font-size: 8px;
             color: #6B7280;
             margin-top: 8px;
             text-align: center;
@@ -147,14 +148,14 @@
         }
 
         .section h3 {
-            font-size: 11px;
+            font-size: 12px;
             color: #3B82F6;
             margin: 4px 0 3px 0;
             font-weight: 600;
         }
 
         .section p {
-            font-size: 9px;
+            font-size: 8px;
             line-height: 1.45;
             color: #374151;
             margin-bottom: 4px;
@@ -166,7 +167,7 @@
         }
 
         .section ul li {
-            font-size: 9px;
+            font-size: 8px;
             line-height: 1.4;
             color: #374151;
             padding-left: 10px;
@@ -192,7 +193,7 @@
         }
 
         .equation {
-            font-size: 10px;
+            font-size: 12px;
             color: #1F2937;
             font-weight: 600;
             margin-bottom: 3px;
@@ -203,7 +204,7 @@
             display: grid;
             grid-template-columns: auto 1fr;
             gap: 2px 8px;
-            font-size: 8px;
+            font-size: 10px;
             color: #4B5563;
         }
 
@@ -261,14 +262,14 @@
         }
 
         .finding-card h4 {
-            font-size: 8px;
+            font-size: 10px;
             color: #1E40AF;
             margin-bottom: 1px;
             font-weight: 700;
         }
 
         .finding-card p {
-            font-size: 7px;
+            font-size: 8px;
             color: #374151;
             line-height: 1.2;
             margin: 0;
@@ -293,16 +294,15 @@
             padding: 0;
         }
 
-        .intervention-box li {
+        .intervention-box ul li {
             font-size: 8px;
             padding: 2px 0;
             color: #92400E;
         }
 
-        .intervention-box li::before {
-            content: "→";
-            margin-right: 3px;
-            font-weight: bold;
+        .intervention-box ul li::before {
+            content: "▸";
+            color: #92400E;
         }
 
         /* Conclusion Box */
@@ -320,7 +320,7 @@
         }
 
         .conclusion-box ul li::before {
-            content: "—";
+            content: "»";
             color: #047857;
         }
 
@@ -331,7 +331,7 @@
 
         /* References */
         .references {
-            font-size: 7px;
+            font-size: 8px;
             color: #6B7280;
             line-height: 1.4;
         }
@@ -357,7 +357,7 @@
                 padding: 0;
                 margin: 0;
             }
-            
+
             .poster {
                 box-shadow: none;
                 width: 297mm;
@@ -374,22 +374,30 @@
         }
     </style>
 </head>
+
 <body>
     <div class="poster">
         <!-- Title Banner -->
         <div class="title-banner">
             <h1>Digital Contagion Simulator: Agent-Based Modeling of Stress Propagation</h1>
-            <div class="subtitle">Creating a Digital Twin of a Classroom to Model Stress Contagion | November 2025</div>
+            <!-- <div class="subtitle">Creating a Digital Twin of a Classroom to Model Stress Contagion | November 2025</div> -->
             <div class="team-info">
-                <div class="team-name">Brainwave Storms</div>
-                <div class="team-members">
-                    Amit Verma (SE23UCSE020) • Jayanth Reddy .Y (SE23UCSE080) • Ishani Singh (SE23UCSE078) • Tanvi Ganesh Borkar (SE23UCSE172) • Yashika Gupta (SE23UCSE190)
+                <div class="team-name" style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <p><b>Couse:</b> Social Computing [CS4222]</p>
+                    <p><b>Team 2:</b> Brainwave Storms</p>
+                </div>
+                <div class="team-members" style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <p>November 2025</p>
+                    <p style="text-align: right;">
+                        Amit Verma (SE23UCSE020) • Jayanth Reddy Yerabolu (SE23UCSE080) <br> Ishani Singh (SE23UCSE078)
+                        • Tanvi
+                        Ganesh Borkar (SE23UCSE172) • Yashika Gupta (SE23UCSE190)</p>
                 </div>
             </div>
         </div>
 
         <!-- Main Content Grid -->
-        <div class="content">
+        <div class="content" style="margin-top: 16px;">
             <!-- LEFT COLUMN: Visualizations -->
             <div class="left-column">
                 <!-- Network Graph -->
@@ -405,7 +413,7 @@
                         <h3>Stress Contagion Over Time</h3>
                         <img src="analysis/viz_intervention_comparison_final.png" alt="Stress Over Time">
                     </div>
-                    
+
                     <div class="viz-box">
                         <h3>Stress Evolution by Persona</h3>
                         <img src="analysis/viz_supplementary_analysis.png" alt="Stress by Persona">
@@ -415,25 +423,28 @@
                 <!-- Scenario Comparison Graphs (2x2 Grid) -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px;">
                     <div class="viz-box" style="padding: 3px;">
-                        <h3 style="font-size: 9px; margin-bottom: 2px;">Targeting Paradox</h3>
+                        <h3 style="font-size: 10px; margin-bottom: 2px;">Targeting Paradox</h3>
                         <img src="analysis/scenario_targeting_paradox.png" alt="Targeting Paradox">
                         <p class="viz-caption">Influencer vs Random: -3.7% stress but +12.5% burnout</p>
                     </div>
-                    
+
                     <div class="viz-box" style="padding: 4px;">
-                        <h3 style="font-size: 9px; margin-bottom: 3px;">Echo Chamber Effect</h3>
-                        <img src="analysis/scenario_echo_chamber.png" alt="Echo Chamber">
-                        <p class="viz-caption">β=0.8 peer influence: -65% stress, 0 burnout</p>
+                        <h3 style="font-size: 10px; margin-bottom: 3px;">Echo Chamber Effect</h3>
+                        <div style="display: flex;">
+                            <img src="echostree.jpg" alt="Echo Chamber" style="width: 120px;">
+                            <img src="echoburn.jpg" alt="Echo Chamber" style="width: 120px;">
+                        </div>
+                        <p class="viz-caption">β=0.8 peer influence: -22% stress, 1 burnout</p>
                     </div>
-                    
+
                     <div class="viz-box" style="padding: 4px;">
-                        <h3 style="font-size: 9px; margin-bottom: 3px;">Universal vs Targeted</h3>
+                        <h3 style="font-size: 10px; margin-bottom: 3px;">Universal vs Targeted</h3>
                         <img src="analysis/scenario_universal_vs_targeted.png" alt="Universal vs Targeted">
                         <p class="viz-caption">Population-wide achieves 5× better results</p>
                     </div>
-                    
+
                     <div class="viz-box" style="padding: 4px;">
-                        <h3 style="font-size: 9px; margin-bottom: 3px;">Intervention Timing</h3>
+                        <h3 style="font-size: 10px; margin-bottom: 3px;">Intervention Timing</h3>
                         <img src="analysis/scenario_intervention_timing.png" alt="Timing">
                         <p class="viz-caption">Late intervention (Day 25) still 7% effective</p>
                     </div>
@@ -442,32 +453,37 @@
                 <!-- QR Code -->
                 <div class="viz-box" style="padding: 10px; text-align: center; margin-top: 8px;">
                     <h3>Interactive Demo</h3>
-                    <div style="width: 120px; height: 120px; margin: 0 auto; background: white; border: 2px solid #E5E7EB; display: flex; align-items: center; justify-content: center;">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h45v45H0z"/><path stroke="#000000" d="M4 4.5h7m1 0h1m1 0h2m2 0h1m1 0h4m1 0h1m1 0h4m3 0h7M4 5.5h1m5 0h1m1 0h5m3 0h1m3 0h1m7 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h5m2 0h1m4 0h3m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h2m6 0h5m3 0h1m1 0h2m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h2m2 0h3m5 0h2m1 0h1m1 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h4m2 0h1m1 0h2m2 0h1m1 0h1m2 0h1m3 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M17 11.5h1m7 0h1m1 0h3m1 0h2M4 12.5h1m2 0h6m1 0h1m2 0h2m1 0h1m1 0h4m2 0h1m1 0h4m2 0h1m1 0h3M6 13.5h2m1 0h1m1 0h2m2 0h3m3 0h1m2 0h1m1 0h1m4 0h1m3 0h3m1 0h1M5 14.5h3m2 0h1m2 0h3m9 0h1m2 0h1m1 0h4m1 0h3m2 0h1M4 15.5h4m1 0h1m1 0h2m4 0h3m1 0h1m8 0h5m3 0h3M6 16.5h3m1 0h3m1 0h2m4 0h1m2 0h1m7 0h2m1 0h2m1 0h1m2 0h1M4 17.5h1m1 0h1m1 0h1m10 0h3m5 0h1m1 0h5m2 0h2M4 18.5h1m1 0h7m2 0h2m1 0h2m1 0h1m1 0h4m2 0h6m1 0h5M5 19.5h1m1 0h2m2 0h1m4 0h1m1 0h2m1 0h2m4 0h1m3 0h1m1 0h1m1 0h1m1 0h4M5 20.5h2m1 0h3m1 0h1m2 0h2m1 0h4m1 0h3m2 0h2m2 0h1m1 0h1m3 0h3M4 21.5h2m2 0h1m4 0h3m2 0h1m1 0h3m1 0h1m2 0h2m2 0h1m1 0h1m1 0h1m1 0h1M6 22.5h1m2 0h2m1 0h1m1 0h3m1 0h2m2 0h1m1 0h1m1 0h3m1 0h2m2 0h3m1 0h1m1 0h1M4 23.5h2m2 0h1m2 0h1m1 0h1m1 0h2m9 0h4m2 0h3m1 0h2m2 0h1M6 24.5h5m1 0h1m2 0h2m1 0h4m6 0h1m1 0h1m1 0h6M6 25.5h1m1 0h2m5 0h3m1 0h1m2 0h2m1 0h7m4 0h1m1 0h1M4 26.5h1m1 0h1m1 0h3m3 0h2m2 0h5m3 0h2m3 0h3m1 0h1m1 0h1m2 0h1M5 27.5h1m3 0h1m2 0h1m2 0h1m4 0h2m3 0h2m5 0h1m1 0h7M4 28.5h3m1 0h3m3 0h1m5 0h4m1 0h1m6 0h1m1 0h1m5 0h1M4 29.5h1m1 0h1m1 0h1m4 0h4m1 0h1m1 0h1m2 0h2m2 0h1m1 0h3m4 0h1M4 30.5h2m1 0h2m1 0h1m1 0h1m1 0h4m2 0h6m3 0h8m2 0h2M4 31.5h1m9 0h1m3 0h2m4 0h1m2 0h1m3 0h1m1 0h1m1 0h1m1 0h4M4 32.5h1m1 0h1m1 0h3m2 0h4m5 0h1m1 0h1m1 0h1m1 0h3m1 0h9M12 33.5h3m1 0h1m1 0h2m2 0h3m7 0h1m3 0h1m1 0h1M4 34.5h7m1 0h1m3 0h5m2 0h1m1 0h3m1 0h2m1 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h1m1 0h1m1 0h1m3 0h3m3 0h4m1 0h2m3 0h1m2 0h2M4 36.5h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h2m5 0h2m1 0h1m1 0h7M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1m1 0h3m4 0h1m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1M4 38.5h1m1 0h3m1 0h1m3 0h2m3 0h3m1 0h2m2 0h3m3 0h1m2 0h1m1 0h1m1 0h1M4 39.5h1m5 0h1m2 0h1m1 0h2m3 0h2m1 0h2m2 0h1m8 0h5M4 40.5h7m1 0h2m2 0h1m1 0h3m3 0h1m1 0h3m3 0h1m2 0h1m1 0h1m2 0h1"/></svg>
+                    <div
+                        style="width: 300px; height: 300px; margin: 0 auto; background: white; border: 2px solid #E5E7EB; display: flex; align-items: center; justify-content: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" shape-rendering="crispEdges">
+                            <path fill="#ffffff" d="M0 0h45v45H0z" />
+                            <path stroke="#000000"
+                                d="M4 4.5h7m1 0h1m1 0h2m2 0h1m1 0h4m1 0h1m1 0h4m3 0h7M4 5.5h1m5 0h1m1 0h5m3 0h1m3 0h1m7 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h5m2 0h1m4 0h3m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h2m6 0h5m3 0h1m1 0h2m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h2m2 0h3m5 0h2m1 0h1m1 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h4m2 0h1m1 0h2m2 0h1m1 0h1m2 0h1m3 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M17 11.5h1m7 0h1m1 0h3m1 0h2M4 12.5h1m2 0h6m1 0h1m2 0h2m1 0h1m1 0h4m2 0h1m1 0h4m2 0h1m1 0h3M6 13.5h2m1 0h1m1 0h2m2 0h3m3 0h1m2 0h1m1 0h1m4 0h1m3 0h3m1 0h1M5 14.5h3m2 0h1m2 0h3m9 0h1m2 0h1m1 0h4m1 0h3m2 0h1M4 15.5h4m1 0h1m1 0h2m4 0h3m1 0h1m8 0h5m3 0h3M6 16.5h3m1 0h3m1 0h2m4 0h1m2 0h1m7 0h2m1 0h2m1 0h1m2 0h1M4 17.5h1m1 0h1m1 0h1m10 0h3m5 0h1m1 0h5m2 0h2M4 18.5h1m1 0h7m2 0h2m1 0h2m1 0h1m1 0h4m2 0h6m1 0h5M5 19.5h1m1 0h2m2 0h1m4 0h1m1 0h2m1 0h2m4 0h1m3 0h1m1 0h1m1 0h1m1 0h4M5 20.5h2m1 0h3m1 0h1m2 0h2m1 0h4m1 0h3m2 0h2m2 0h1m1 0h1m3 0h3M4 21.5h2m2 0h1m4 0h3m2 0h1m1 0h3m1 0h1m2 0h2m2 0h1m1 0h1m1 0h1m1 0h1M6 22.5h1m2 0h2m1 0h1m1 0h3m1 0h2m2 0h1m1 0h1m1 0h3m1 0h2m2 0h3m1 0h1m1 0h1M4 23.5h2m2 0h1m2 0h1m1 0h1m1 0h2m9 0h4m2 0h3m1 0h2m2 0h1M6 24.5h5m1 0h1m2 0h2m1 0h4m6 0h1m1 0h1m1 0h6M6 25.5h1m1 0h2m5 0h3m1 0h1m2 0h2m1 0h7m4 0h1m1 0h1M4 26.5h1m1 0h1m1 0h3m3 0h2m2 0h5m3 0h2m3 0h3m1 0h1m1 0h1m2 0h1M5 27.5h1m3 0h1m2 0h1m2 0h1m4 0h2m3 0h2m5 0h1m1 0h7M4 28.5h3m1 0h3m3 0h1m5 0h4m1 0h1m6 0h1m1 0h1m5 0h1M4 29.5h1m1 0h1m1 0h1m4 0h4m1 0h1m1 0h1m2 0h2m2 0h1m1 0h3m4 0h1M4 30.5h2m1 0h2m1 0h1m1 0h1m1 0h4m2 0h6m3 0h8m2 0h2M4 31.5h1m9 0h1m3 0h2m4 0h1m2 0h1m3 0h1m1 0h1m1 0h1m1 0h4M4 32.5h1m1 0h1m1 0h3m2 0h4m5 0h1m1 0h1m1 0h1m1 0h3m1 0h9M12 33.5h3m1 0h1m1 0h2m2 0h3m7 0h1m3 0h1m1 0h1M4 34.5h7m1 0h1m3 0h5m2 0h1m1 0h3m1 0h2m1 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h1m1 0h1m1 0h1m3 0h3m3 0h4m1 0h2m3 0h1m2 0h2M4 36.5h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h2m5 0h2m1 0h1m1 0h7M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1m1 0h3m4 0h1m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1M4 38.5h1m1 0h3m1 0h1m3 0h2m3 0h3m1 0h2m2 0h3m3 0h1m2 0h1m1 0h1m1 0h1M4 39.5h1m5 0h1m2 0h1m1 0h2m3 0h2m1 0h2m2 0h1m8 0h5M4 40.5h7m1 0h2m2 0h1m1 0h3m3 0h1m1 0h3m3 0h1m2 0h1m1 0h1m2 0h1" />
+                        </svg>
                     </div>
-                    <p class="viz-caption" style="margin-top: 6px; font-size: 9px;">Scan to try the simulator</p>
-                </div>
-
-                <!-- Policy & Future Work -->
-                <div class="viz-box" style="background: #FFFBEB; padding: 10px; margin-top: 10px;">
-                    <h3 style="font-size: 11px; color: #B45309; margin-bottom: 5px;">Policy Implications & Future Directions</h3>
-                    <div style="font-size: 8px; color: #78350F; line-height: 1.4;">
-                        <p style="margin-bottom: 4px;">Campus wellness programs should adopt hybrid strategies that identify network influencers through centrality analysis while implementing population-level policies like screen-free hours. This combines topological efficiency with coverage completeness.</p>
-                        <p style="margin-bottom: 4px; font-style: italic;">Limitations: Simplified linear stress transmission, static network topology, single intervention modality, synthetic agent population requiring real-world validation.</p>
-                        <p style="margin-bottom: 0; font-style: italic;">Future work: Non-linear contagion thresholds, dynamic network formation, combined interventions (detox + resilience training), calibration with longitudinal student health data.</p>
-                    </div>
+                    <p class="viz-caption" style="margin-top: 6px; font-size: 8px;">Scan to try the simulator</p>
                 </div>
 
                 <!-- References -->
                 <div class="viz-box" style="background: #F8FAFC; padding: 10px; margin-top: 10px;">
-                    <h3 style="font-size: 11px; color: #1F2937; margin-bottom: 5px;">References</h3>
+                    <h3 style="font-size: 10px; color: #1F2937; margin-bottom: 5px;">References</h3>
                     <div style="font-size: 8px; color: #4B5563; line-height: 1.5;">
-                        <p style="margin-bottom: 3px;">Christakis, N. A., & Fowler, J. H. (2008). Dynamic spread of happiness in a large social network: longitudinal analysis over 20 years in the Framingham Heart Study. <em>BMJ</em>, 337, a2338.</p>
-                        <p style="margin-bottom: 3px;">Thomée, S., Härenstam, A., & Hagberg, M. (2011). Mobile phone use and stress, sleep disturbances, and symptoms of depression among young adults. <em>BMC Public Health</em>, 11(1), 66.</p>
-                        <p style="margin-bottom: 3px;">Valakhorasani, K. (2024). User Behavior Dataset: Smartphone Usage Patterns. <em>Kaggle Open Data Repository</em>.</p>
-                        <p style="margin-bottom: 3px;">Kermack, W. O., & McKendrick, A. G. (1927). A contribution to the mathematical theory of epidemics. <em>Proceedings of the Royal Society A</em>, 115(772), 700-721.</p>
-                        <p style="margin-bottom: 3px;">Epstein, J. M., & Axtell, R. (1996). <em>Growing Artificial Societies: Social Science from the Bottom Up</em>. MIT Press.</p>
-                        <p style="margin-bottom: 0; margin-top: 5px; font-size: 8.5px; color: #1F2937;"> Full technical report and source code: github.com/amitverma-cf/sc-digital-contagion-simulator</p>
+                        <p style="margin-bottom: 3px;">Christakis, N. A., & Fowler, J. H. (2008). Dynamic spread of
+                            happiness in a large social network: longitudinal analysis over 20 years in the Framingham
+                            Heart Study. <em>BMJ</em>, 337, a2338.</p>
+                        <p style="margin-bottom: 3px;">Thomée, S., Härenstam, A., & Hagberg, M. (2011). Mobile phone use
+                            and stress, sleep disturbances, and symptoms of depression among young adults. <em>BMC
+                                Public Health</em>, 11(1), 66.</p>
+                        <p style="margin-bottom: 3px;">Valakhorasani, K. (2024). User Behavior Dataset: Smartphone Usage
+                            Patterns. <em>Kaggle Open Data Repository</em>.</p>
+                        <p style="margin-bottom: 3px;">Kermack, W. O., & McKendrick, A. G. (1927). A contribution to the
+                            mathematical theory of epidemics. <em>Proceedings of the Royal Society A</em>, 115(772),
+                            700-721.</p>
+                        <p style="margin-bottom: 3px;">Epstein, J. M., & Axtell, R. (1996). <em>Growing Artificial
+                                Societies: Social Science from the Bottom Up</em>. MIT Press.</p>
+                        <p style="margin-bottom: 0; margin-top: 5px; font-size: 8px; color: #1F2937;"> Full technical
+                            report and source code: <i
+                                style="color: blue;">github.com/amitverma-cf/sc-digital-contagion-simulator</i></p>
                     </div>
                 </div>
             </div>
@@ -477,14 +493,20 @@
                 <!-- Abstract -->
                 <div class="section abstract">
                     <h2>Abstract</h2>
-                    <p>We developed a "Digital Twin" of a social network to analyze how stress spreads through peer interactions. Using behavioral data from 700 smartphone users, we trained 100 synthetic agents to mimic real human patterns. We simulated 30 days of interaction where stress spreads like a contagion. Our results show that targeting just the top 5% of highly connected users reduced the entire network's stress by 5.9%, though it revealed complex trade-offs regarding burnout prevention.</p>
+                    <p>We developed a "Digital Twin" of a social network to analyze how stress spreads through peer
+                        interactions. Using behavioral data from 700 smartphone users, we trained 100 synthetic agents
+                        to mimic real human patterns. We simulated 30 days of interaction where stress spreads like a
+                        contagion. Our results show that targeting just the top 5% of highly connected users reduced the
+                        entire network's stress by 5.9%, though it revealed complex trade-offs regarding burnout
+                        prevention.</p>
                 </div>
 
                 <!-- Methodology -->
                 <div class="section">
                     <h2>Methodology: The Digital Twin</h2>
                     <h3>1. Creating the Personas (K-Means Clustering)</h3>
-                    <p>We did not just make up the agents. We ran a K-Means clustering algorithm on the dataset to mathematically define 5 specific user types:</p>
+                    <p>We did not just make up the agents. We ran a K-Means clustering algorithm on the dataset to
+                        mathematically define 5 specific user types:</p>
                     <ul>
                         <li>Minimalists (14%) - Low screen time, minimal app switching</li>
                         <li>Moderate Users (21%) - Balanced usage patterns</li>
@@ -493,16 +515,25 @@
                         <li>Digital Addicts (9%) - Extreme usage, frequent notifications</li>
                     </ul>
                     <h3>2. Building the Network (Stochastic Block Model)</h3>
-                    <p>We constructed a social graph with 100 nodes and 270 edges. We used an "assortativity" factor of 0.426, which means the code forced agents to connect mostly with people who share their habits. This ensures the simulation mimics real-world social bubbles rather than a random group of strangers.</p>
+                    <p>We constructed a social graph with 100 nodes and 270 edges. We used an "assortativity" factor of
+                        0.426, which means the code forced agents to connect mostly with people who share their habits.
+                        This ensures the simulation mimics real-world social bubbles rather than a random group of
+                        strangers.</p>
                 </div>
 
                 <!-- Model Equations -->
                 <div class="section">
                     <h2>The Mathematical Model</h2>
-                    <p>Dynamic Stress Equation: We defined stress as a dynamic value that updates every single day based on this linear combination of three forces. Personal usage contributes directly (α=0.6), representing the primary driver of cognitive load. Peer influence (β=0.3) models the viral spread of stress through network neighbors, weighted by individual susceptibility (0.5-1.5, capturing variation in social conformity). Resilience (γ=0.1) provides a protective buffer based on the agent's individual coping stats (0.7-1.3 range). Stress is capped at 100.</p>
-                    
+                    <p>Dynamic Stress Equation: We defined stress as a dynamic value that updates every single day based
+                        on this linear combination of three forces. Personal usage contributes directly (α=0.6),
+                        representing the primary driver of cognitive load. Peer influence (β=0.3) models the viral
+                        spread of stress through network neighbors, weighted by individual susceptibility (0.5-1.5,
+                        capturing variation in social conformity). Resilience (γ=0.1) provides a protective buffer based
+                        on the agent's individual coping stats (0.7-1.3 range). Stress is capped at 100.</p>
+
                     <div class="equation-box">
-                        <div class="equation">Stress<sub>t</sub> = α·Usage + β·PeerStress·Suscept - γ·Resilience·10</div>
+                        <div class="equation">Stress<sub>t</sub> = α·Usage + β·PeerStress·Suscept - γ·Resilience·10
+                        </div>
                         <div class="params">
                             <span class="param-name">α = 0.6</span>
                             <span>Personal usage weight</span>
@@ -517,10 +548,15 @@
                         </div>
                     </div>
 
-                    <p>The Feedback Loop: We coded a feedback mechanism (δ=0.02). If an agent gets stressed today, the model forces them to increase their app usage tomorrow. This simulates "doomscrolling," creating a vicious cycle where stress creates more usage, which creates more stress. Variability (0.8-1.2) captures behavioral consistency, while Gaussian noise (σ=0.1) adds realistic daily fluctuation. Usage floor is 30 min/day.</p>
+                    <p>The Feedback Loop: We coded a feedback mechanism (δ=0.02). If an agent gets stressed today, the
+                        model forces them to increase their app usage tomorrow. This simulates "doomscrolling," creating
+                        a vicious cycle where stress creates more usage, which creates more stress. Variability
+                        (0.8-1.2) captures behavioral consistency, while Gaussian noise (σ=0.1) adds realistic daily
+                        fluctuation. Usage floor is 30 min/day.</p>
 
                     <div class="equation-box">
-                        <div class="equation">Usage<sub>t</sub> = Usage<sub>t-1</sub> × (1 + δ·Stress/100) × Variability × Noise</div>
+                        <div class="equation">Usage<sub>t</sub> = Usage<sub>t-1</sub> × (1 + δ·Stress/100) × Variability
+                            × Noise</div>
                         <div class="params">
                             <span class="param-name">δ = 0.02</span>
                             <span>Stress amplification</span>
@@ -531,60 +567,76 @@
                         </div>
                     </div>
 
-                    <p style="color: #DC2626; margin-top: 6px;">Burnout Threshold: Stress > 80 (clinical significance based on standardized stress scales)</p>
+                    <p style="color: #DC2626; margin-top: 6px;">Burnout Threshold: Stress > 80 (clinical significance
+                        based on standardized stress scales)</p>
                 </div>
 
                 <!-- Intervention -->
                 <div class="section">
                     <h2>The Intervention Experiment</h2>
-                    <p>Targeting Method: We identified the Top 5 Influencers using Degree Centrality (the nodes with the highest number of connections). Alternative centrality measures (betweenness, eigenvector, pagerank) were tested; degree centrality proved most effective for this network topology (assortativity 0.426 favors local clustering).</p>
+                    <p>Targeting Method: We identified the Top 5 Influencers using Degree Centrality (the nodes with the
+                        highest number of connections). Alternative centrality measures (betweenness, eigenvector,
+                        pagerank) were tested; degree centrality proved most effective for this network topology
+                        (assortativity 0.426 favors local clustering).</p>
                     <div class="intervention-box">
                         <h4>Day 10-30: Digital Quarantine Protocol</h4>
                         <ul>
-                            <li>Usage Clamp: Forced their screen time down by 50%</li>
-                            <li>Transmission Block: Reduced the amount of stress they broadcast to neighbors by 70%</li>
-                            <li>No change to resilience/susceptibility (isolates behavioral mechanism)</li>
+                            <li><b style="margin-left: 8px;">Usage Clamp:</b> Forced their screen time down by 50%</li>
+                            <li><b style="margin-left: 8px;">Transmission Block:</b> Reduced the amount of stress they
+                                broadcast to neighbors by 70%</li>
+                            <li><b style="margin-left: 8px;">No change</b> to resilience/susceptibility (isolates
+                                behavioral mechanism)</li>
                         </ul>
                     </div>
-                    <p>Rationale: Day 10 timing allows stress to build naturally before intervention, simulating real-world delayed response. Early intervention (Day 5) prevents meaningful stress accumulation; late intervention (Day 25) still achieves 7% reduction, demonstrating robustness.</p>
+                    <p>Rationale: Day 10 timing allows stress to build naturally before intervention, simulating
+                        real-world delayed response. Early intervention (Day 5) prevents meaningful stress accumulation;
+                        late intervention (Day 25) still achieves 7% reduction, demonstrating robustness.</p>
                 </div>
 
                 <!-- Results -->
                 <div class="section">
                     <h2>Results & Findings</h2>
-                    <p>The Primary Numbers: Intervention reduced Day 30 population stress by 2.52 points (5.9% decrease, p<0.05). Error bars (±SD across 5 runs) show baseline variance (σ=1.16) higher than intervention (σ=0.73), indicating stabilizing effect. Statistical significance confirmed via paired t-test.</p>
-                    <table class="results-table">
-                        <thead>
-                            <tr>
-                                <th>Metric</th>
-                                <th>Baseline</th>
-                                <th>Intervention</th>
-                                <th>Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Final Stress</strong></td>
-                                <td>42.61 ± 1.16</td>
-                                <td>40.09 ± 0.73</td>
-                                <td class="highlight">-5.9%</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Burnout Cases</strong></td>
-                                <td>5.8 ± 1.3</td>
-                                <td>5.4 ± 1.1</td>
-                                <td>-0.4 agents</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Stabilization</strong></td>
-                                <td>Day 23.4</td>
-                                <td>Day 21.8</td>
-                                <td>1.6 days faster</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p style="font-size: 7px; color: #6B7280; margin-top: 2px;"><em>*Avg. 5 runs. Stabilization: dStress/dt<0.5 for 3 days.</em></p>
-                    <p>Interpretation: Burnout reduction modest (-0.4 agents, 6.9% decrease) due to threshold effects. Agents near 80 stress exhibit high variance. Faster stabilization (1.6 days) indicates intervention breaks stress-usage feedback loops earlier, preventing runaway dynamics.</p>
+                    <p>The Primary Numbers: Intervention reduced Day 30 population stress by 2.52 points (5.9% decrease,
+                        p<0.05). Error bars (±SD across 5 runs) show baseline variance (σ=1.16) higher than intervention
+                            (σ=0.73), indicating stabilizing effect. Statistical significance confirmed via paired
+                            t-test.</p>
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Baseline</th>
+                                        <th>Intervention</th>
+                                        <th>Change</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Final Stress</strong></td>
+                                        <td>42.61 ± 1.16</td>
+                                        <td>40.09 ± 0.73</td>
+                                        <td class="highlight">-5.9%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Burnout Cases</strong></td>
+                                        <td>5.8 ± 1.3</td>
+                                        <td>5.4 ± 1.1</td>
+                                        <td>-0.4 agents</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Stabilization</strong></td>
+                                        <td>Day 23.4</td>
+                                        <td>Day 21.8</td>
+                                        <td>1.6 days faster</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="font-size: 8px; color: #6B7280; margin-top: 2px;"><em>*Avg. 5 runs. Stabilization:
+                                    dStress/dt<0.5 for 3 days.</em>
+                            </p>
+                            <p>Interpretation: Burnout reduction modest (-0.4 agents, 6.9% decrease) due to threshold
+                                effects. Agents near 80 stress exhibit high variance. Faster stabilization (1.6 days)
+                                indicates intervention breaks stress-usage feedback loops earlier, preventing runaway
+                                dynamics.</p>
                 </div>
 
                 <!-- Key Findings -->
@@ -592,24 +644,33 @@
                     <h2>Key Findings: The Complex Discoveries</h2>
                     <div class="findings-grid">
                         <div class="finding-card">
-                            <div class="icon">🎯</div>
                             <h4>Finding 1: The Targeting Paradox</h4>
-                            <p>This was our most complex discovery. Targeting influencers successfully lowered the average stress of the whole network, but it actually increased the number of burnout cases by 12.5% compared to targeting random people. The Reason: Influencers act as social hubs. When we "quarantine" them, their dependent friends lose social connection, causing localized stress spikes that push vulnerable agents into burnout.</p>
+                            <p>This was our most complex discovery. Targeting influencers successfully lowered the
+                                average stress of the whole network, but it actually increased the number of burnout
+                                cases by 12.5% compared to targeting random people. The Reason: Influencers act as
+                                social hubs. When we "quarantine" them, their dependent friends lose social connection,
+                                causing localized stress spikes that push vulnerable agents into burnout.</p>
                         </div>
                         <div class="finding-card">
-                            <div class="icon">🔊</div>
                             <h4>Finding 2: The Echo Chamber Effect</h4>
-                            <p>We ran a separate test where we increased the peer influence weight to 80% (simulating a highly conformist environment). In this specific scenario, targeting influencers was massive. It cut stress by 65% and completely eliminated all burnout cases. Real-world implication: Interventions more effective in highly conformist populations.</p>
+                            <p>We ran a separate test where we increased the peer influence weight to 80% (simulating a
+                                highly conformist environment). Without any intervention, high peer influence created a
+                                stress cascade that was 22% worse than low influence networks, resulting in persistent
+                                burnout cases. Real-world implication: Echo chambers amplify stress contagion, making
+                                highly connected networks more vulnerable to collective distress.</p>
                         </div>
                         <div class="finding-card">
-                            <div class="icon">🌍</div>
                             <h4>Finding 3: Collective Action vs. Leverage</h4>
-                            <p>We simulated a "Universal Detox" where all 100 agents reduced usage. This approach was 5 times more effective than targeting the influencers. This mathematically proves that while network leverage helps, it cannot outperform collective behavior change when contagion is weak (β=0.3).</p>
+                            <p>We simulated a "Universal Detox" where all 100 agents reduced usage. This approach was 5
+                                times more effective than targeting the influencers. This mathematically proves that
+                                while network leverage helps, it cannot outperform collective behavior change when
+                                contagion is weak (β=0.3).</p>
                         </div>
                         <div class="finding-card">
-                            <div class="icon">⏰</div>
                             <h4>Finding 4: Intervention Timing</h4>
-                            <p>Late intervention (Day 25 vs Day 10) still achieves 7% stress reduction and prevents 2 burnouts. System exhibits path dependence. Early stress establishes network gradients that persist. This proves late action can still disrupt equilibrium effectively.</p>
+                            <p>Late intervention (Day 25 vs Day 10) still achieves 7% stress reduction and prevents 2
+                                burnouts. System exhibits path dependence. Early stress establishes network gradients
+                                that persist. This proves late action can still disrupt equilibrium effectively.</p>
                         </div>
                     </div>
                 </div>
@@ -620,15 +681,44 @@
                     <div class="conclusion-box">
                         <h3>What We Proved</h3>
                         <ul>
-                            <li>Network Position: Intervening on just 5% of the network affected the stress levels of 100% of the agents through 2-3 hop diffusion</li>
-                            <li>Trade-offs: We found that optimizing for lower average stress (targeting influencers) is different from optimizing for fewer burnouts (targeting isolated users)</li>
-                            <li>Complexity: You cannot just treat the "super-spreaders" and expect the problem to vanish; the network structure fights back</li>
-                            <li>Scale Matters: Universal interventions (100% coverage) outperform targeted strategies 5× in weak-contagion regimes (β=0.3)</li>
+                            <li>Network Position: Intervening on just 5% of the network affected the stress levels of
+                                100% of the agents through 2-3 hop diffusion</li>
+                            <li>Trade-offs: We found that optimizing for lower average stress (targeting influencers) is
+                                different from optimizing for fewer burnouts (targeting isolated users)</li>
+                            <li>Complexity: You cannot just treat the "super-spreaders" and expect the problem to
+                                vanish; the network structure fights back</li>
+                            <li>Scale Matters: Universal interventions (100% coverage) outperform targeted strategies 5×
+                                in weak-contagion regimes (β=0.3)</li>
                         </ul>
+                    </div>
+
+                    <!-- Policy & Future Work -->
+                    <div>
+                        <h3
+                            style="color: #B45309; margin-bottom: 5px; text-align: left; font-size: 12px; font-weight: 600;">
+                            Policy Implications & Future
+                            Directions</h3>
+                        <div style="font-size: 8px; line-height: 1.4;">
+                            <p style="margin-bottom: 4px;">Campus wellness programs should adopt hybrid strategies that
+                                identify network influencers through centrality analysis while implementing
+                                population-level
+                                policies like screen-free hours. This combines topological efficiency with coverage
+                                completeness.</p>
+                            <p style="margin-bottom: 4px; font-style: italic;"><b>Limitations:</b> Simplified linear
+                                stress
+                                transmission, static network topology, single intervention modality, synthetic agent
+                                population requiring real-world validation.</p>
+                            <p style="margin-bottom: 0; font-style: italic;"><b>Future work:</b> Non-linear contagion
+                                thresholds,
+                                dynamic network formation, combined interventions (detox + resilience training),
+                                calibration
+                                with longitudinal student health data.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
