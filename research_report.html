@@ -41,13 +41,11 @@
 
         .affiliation {
             font-size: 10pt;
-            font-style: italic;
+            
             margin-bottom: 20px;
         }
 
         .abstract {
-            margin: 25px 30px;
-            text-align: justify;
         }
 
         .abstract h2 {
@@ -55,10 +53,6 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 10px;
-        }
-
-        .abstract p {
-            font-size: 10pt;
         }
 
         h2 {
@@ -74,12 +68,10 @@
             font-weight: bold;
             margin-top: 15px;
             margin-bottom: 8px;
-            font-style: italic;
         }
 
         p {
             margin-bottom: 10px;
-            text-align: justify;
         }
 
         ul, ol {
@@ -95,49 +87,35 @@
             width: 100%;
             border-collapse: collapse;
             margin: 15px 0;
-            font-size: 10pt;
+            font-size: 11pt;
         }
 
         table caption {
-            font-size: 10pt;
+            font-size: 11pt;
             font-weight: bold;
             margin-bottom: 8px;
             text-align: left;
         }
 
         table th {
-            border-top: 2px solid #000;
-            border-bottom: 1px solid #000;
-            padding: 6px 8px;
+            border: 1px solid #000;
+            padding: 5px;
             text-align: left;
             font-weight: bold;
         }
 
         table td {
-            padding: 5px 8px;
-            border-bottom: 0.5px solid #999;
-        }
-
-        table tr:last-child td {
-            border-bottom: 2px solid #000;
+            border: 1px solid #000;
+            padding: 5px;
         }
 
         .equation {
             margin: 15px 0;
-            padding: 10px 20px;
             text-align: center;
-            font-family: 'Times New Roman', Times, serif;
-            font-style: italic;
-        }
-
-        .references {
-            font-size: 10pt;
         }
 
         .references p {
             margin-bottom: 8px;
-            text-indent: -20px;
-            margin-left: 20px;
         }
 
         strong {
@@ -173,37 +151,35 @@
 <body>
 
     <div class="title-section">
-        <h1>Agent-Based Modeling of Digital Stress Propagation in Social Networks: An Empirical Investigation of Targeted Intervention Strategies</h1>
+        <h1>Simulating Digital Stress Contagion in Social Networks: Testing Targeted Intervention Strategies</h1>
         
         <p class="authors">
-            Amit Verma, Jayanth Reddy Y, Ishani Singh, Tanvi Ganesh Borkar, Yashika Gupta
+            Amit Verma, Jayanth Reddy Yerabolu, Ishani Singh, Tanvi Ganesh Borkar, Yashika Gupta
         </p>
         
         <p class="affiliation">
             Department of Computer Science and Engineering<br>
-            [Institution Name], November 2025
+            Mahindra University, November 2025
         </p>
     </div>
 
     <div class="abstract">
         <h2>ABSTRACT</h2>
         <p>
-            Digital stress and burnout among students have emerged as critical mental health challenges, yet traditional intervention approaches treat stress as an individual phenomenon rather than a network-level contagion. We present an agent-based simulation framework that models stress propagation through social networks using empirically grounded behavioral data from 700 smartphone users. Our model incorporates homophilous network structures (assortativity = 0.426), stress contagion dynamics calibrated from social epidemiology literature, and self-reinforcing feedback loops that capture doomscrolling behavior. We evaluate a targeted intervention strategy where the top 5% of highly connected individuals reduce their digital usage and stress transmission. Results demonstrate a 5.9% reduction in network-wide stress (p < 0.05) but reveal a paradox: targeting influencers minimizes average stress while increasing burnout cases by 12.5% compared to targeting isolated individuals. Additional experiments show that collective action (universal participation) achieves 5× greater stress reduction than targeted approaches, and that intervention effectiveness varies significantly with network conformity levels. These findings suggest that optimal digital wellness strategies require hybrid approaches that balance network leverage with protection of vulnerable individuals.
+            Digital stress and burnout among students have become serious mental health problems, but traditional approaches treat stress as an individual issue rather than a network-level contagion. We built an agent-based simulation that models stress contagion through social networks using real behavioral data from 700 smartphone users. Our model includes homophilous network structures (clustering = 0.426), stress contagion dynamics based on social research, and feedback loops that capture doomscrolling behavior. We tested an intervention where the top 5% most connected people reduce their phone usage and stress sharing. Results show a 5.9% drop in overall stress (p < 0.05) but reveal a paradox: targeting influencers lowers average stress but increases burnout cases by 12.5% compared to targeting isolated people. Other experiments show that getting everyone to participate works 5 times better than targeting just influencers, and that how well interventions work depends on how conformist the group is. These findings suggest that good digital wellness programs need mixed strategies that use network structure while protecting vulnerable people.
         </p>
-        <p>
-            <strong>Keywords:</strong> agent-based modeling, social contagion, digital stress, network interventions, mental health
-        </p>
+        
     </div>
 
     <h2>1. INTRODUCTION</h2>
 
-    <p>The pervasive integration of digital technologies into daily life has created new challenges for mental health and wellbeing, particularly among young adults and students. Smartphone usage patterns show strong correlations with stress, anxiety, and sleep disturbances (Thomée et al., 2011). However, most research treats digital stress as an individual-level problem, overlooking the potential for stress to propagate through social networks via peer influence and social comparison mechanisms.</p>
+    <p>Digital technologies have become deeply integrated into daily life, creating new challenges for mental health and wellbeing among young adults and students. Research shows that smartphone usage patterns correlate strongly with stress, anxiety, and sleep problems (Thomée et al., 2011). However, most existing research treats digital stress as an individual problem, not accounting for how stress might spread through social networks through peer influence and social comparison.</p>
 
-    <p>Social contagion research has demonstrated that emotional states, including happiness and depression, spread through interpersonal networks with measurable transmission rates (Christakis & Fowler, 2008; Rosenquist et al., 2011). If digital stress exhibits similar contagion dynamics, then intervention strategies could potentially leverage network structure to amplify their impact. Specifically, targeting highly connected individuals (influencers) might reduce population-level stress more efficiently than random or universal interventions.</p>
+    <p>Work on social contagion has shown that emotional states like happiness and depression spread through social networks at measurable rates (Christakis & Fowler, 2008; Rosenquist et al., 2011). If digital stress follows similar patterns, then intervention strategies could use network structure to amplify their effects. In particular, targeting highly connected individuals might reduce overall stress more efficiently than random or universal interventions.</p>
 
     <p>This research addresses three questions: (1) Can agent-based modeling effectively simulate stress contagion dynamics using empirically grounded behavioral data? (2) Do targeted interventions on network influencers produce measurable reductions in population-level stress? (3) What are the trade-offs between different intervention strategies in terms of average outcomes versus worst-case scenarios?</p>
 
-    <p>We developed a computational model that simulates 100 synthetic agents interacting over 30 days in a homophilous social network. Agent behaviors are statistically derived from the Valakhorasani User Behavior Dataset (700 smartphone users), and stress dynamics incorporate established parameters from social contagion literature. Our intervention simulations test the hypothesis that reducing usage and transmission among the top 5 most connected individuals will decrease network-wide stress levels.</p>
+    <p>We developed a computational model that simulates 100 agents interacting over 30 days in a homophilous social network. Agent behaviors are derived from the Valakhorasani User Behavior Dataset (700 smartphone users), and stress contagion dynamics incorporate parameters from social contagion research. Our simulations test whether reducing usage among the top 5 most connected individuals will decrease network-wide stress levels.</p>
 
     <h2>2. METHODOLOGY</h2>
 
@@ -211,7 +187,7 @@
 
     <p>We utilized the Valakhorasani User Behavior Dataset (2024) comprising 700 smartphone users with 11 behavioral attributes including screen time, application usage frequency, notification counts, and battery consumption. Initial profiling revealed strong correlations between screen time and app usage (r = 0.89) and battery drain (r = 0.76), validating the dataset's internal consistency.</p>
 
-    <p>To capture behavioral heterogeneity, we applied k-means clustering (k = 5) on six normalized features: screen time, app usage, battery drain, app installations, app uninstallations, and notification frequency. The silhouette score (0.524) confirmed adequate cluster separation. This analysis identified five distinct user personas (Table 1).</p>
+    <p>To capture the different types of users, we applied k-means clustering (k = 5) on six features: screen time, app usage, battery drain, app installations, app uninstallations, and notification frequency. The silhouette score (0.524) showed good cluster separation. We found five distinct user types (Table 1).</p>
 
     <table>
         <caption>Table 1: User Personas Identified Through K-Means Clustering (k=5)</caption>
@@ -259,7 +235,7 @@
 
     <h3>2.2 Agent Generation and Validation</h3>
 
-    <p>We generated 100 synthetic agents through stratified sampling from persona distributions, maintaining the population proportions observed in the original dataset. Each agent received:</p>
+    <p>We created 100 fake agents by sampling from our persona groups, keeping the same proportions we saw in the original dataset. Each agent got:</p>
 
     <ul>
         <li>Baseline behavioral attributes sampled from their persona's normal distribution (screen time, app usage, battery drain)</li>
@@ -281,22 +257,22 @@
         <li>P(connection | random bridge) = 0.01</li>
     </ul>
 
-    <p>This approach enforces homophily (the tendency for similar individuals to associate) observed in real social networks. The resulting network contained 100 nodes and 270 edges (mean degree = 5.4), with an assortativity coefficient of 0.426, confirming successful homophilous clustering (Newman, 2002). For comparison, random networks exhibit assortativity near 0.</p>
+    <p>This approach enforces homophily (the tendency for similar individuals to associate) observed in real social networks. The resulting network contained 100 nodes and 270 edges (mean degree = 5.4), with clustering coefficient of 0.426, confirming homophilous structure (Newman, 2002). Random networks exhibit clustering near 0.</p>
 
     <p>Influencers were identified using degree centrality, selecting the top 5 agents with connection counts ranging from 13-18 (compared to network mean of 5.4). This 5% intervention coverage represents a realistic resource allocation for targeted programs.</p>
 
     <h3>2.4 Temporal Dynamics Model</h3>
 
-    <p>The simulation executes daily updates over 30 days using two coupled equations that model stress contagion and behavioral feedback:</p>
+    <p>The simulation runs daily updates over 30 days using two coupled equations that model stress contagion and behavioral feedback:</p>
 
-    <p><strong>Stress Update (Network Contagion):</strong></p>
+    <p>Stress Update (Network Contagion):</p>
     <div class="equation">
         S<sub>i,t</sub> = α · U<sub>i,t</sub><sup>norm</sup> + β · S̄<sub>neighbors,t-1</sub> · χ<sub>i</sub> - γ · ρ<sub>i</sub> · 10
     </div>
 
-    <p>Where S<sub>i,t</sub> is agent i's stress at time t, U<sub>i,t</sub><sup>norm</sup> is normalized usage (capped at 100), S̄<sub>neighbors,t-1</sub> is the mean neighbor stress from the previous day, χ<sub>i</sub> is agent i's susceptibility, and ρ<sub>i</sub> is resilience. Parameters α = 0.6, β = 0.3, and γ = 0.1 represent relative weights of personal usage, peer influence, and resilience respectively.</p>
+    <p>Where S<sub>i,t</sub> is agent i's stress at time t, U<sub>i,t</sub><sup>norm</sup> is normalized usage (capped at 100), S̄<sub>neighbors,t-1</sub> is the mean neighbor stress from the previous day, χ<sub>i</sub> is agent i's susceptibility, and ρ<sub>i</sub> is resilience. Parameters α = 0.6, β = 0.3, and γ = 0.1 represent relative weights of personal usage, peer influence, and resilience.</p>
 
-    <p><strong>Usage Update (Self-Reinforcing Feedback):</strong></p>
+    <p>Usage Update (Self-Reinforcing Feedback):</p>
     <div class="equation">
         U<sub>i,t</sub> = U<sub>i,t-1</sub> · (1 + δ · S<sub>i,t-1</sub>/100) · ν<sub>i</sub> · ε<sub>t</sub>
     </div>
@@ -305,22 +281,22 @@
 
     <h3>2.5 Parameter Justification</h3>
 
-    <p>Model parameters were calibrated from peer-reviewed literature:</p>
+    <p>We set model parameters based on published research papers:</p>
 
     <ul>
-        <li><strong>β = 0.3:</strong> Christakis & Fowler (2008) observed ~30% transmission rate for happiness in the Framingham Heart Study social network</li>
-        <li><strong>δ = 0.02:</strong> Thomée et al. (2011) documented 2-3% increase in phone usage among stressed young adults</li>
-        <li><strong>Resilience range [0.7, 1.3]:</strong> Standard ±30% variance for personality traits in agent-based models (Epstein & Axtell, 1996)</li>
-        <li><strong>Susceptibility range [0.5, 1.5]:</strong> Broader ±50% variance reflecting greater individual differences in social conformity</li>
+        <li>β = 0.3: Christakis & Fowler (2008) found that happiness spreads to about 30% of friends in the Framingham Heart Study</li>
+        <li>δ = 0.02: Thomée et al. (2011) documented 2-3% increase in phone usage among stressed young adults</li>
+        <li>Resilience range [0.7, 1.3]: Standard ±30% variance for personality traits in agent-based models (Epstein & Axtell, 1996)</li>
+        <li>Susceptibility range [0.5, 1.5]: Broader ±50% variance reflecting greater individual differences in social conformity</li>
     </ul>
 
     <h3>2.6 Intervention Design</h3>
 
     <p>We implemented two experimental scenarios, each replicated 5 times with different random seeds (42-46) to quantify variance:</p>
 
-    <p><strong>Scenario A (Baseline):</strong> Natural evolution without intervention for 30 days.</p>
+    <p>Scenario A (Baseline): Natural evolution without intervention for 30 days.</p>
 
-    <p><strong>Scenario B (Influencer Intervention):</strong> On day 10, the top 5 agents by degree centrality undergo simultaneous interventions:</p>
+    <p>Scenario B (Influencer Intervention): On day 10, the top 5 agents by degree centrality undergo simultaneous interventions:</p>
     <ol>
         <li>Usage clamping: U<sub>influencer,t</sub> = 0.5 · U<sub>calculated,t</sub></li>
         <li>Transmission dampening: Stress broadcast to neighbors multiplied by 0.3 (70% reduction)</li>
@@ -330,7 +306,7 @@
 
     <h3>2.7 Statistical Analysis</h3>
 
-    <p>We computed mean and standard error across 5 runs for each scenario. Effect sizes were calculated as (Baseline - Intervention) / Baseline × 100%. Paired t-tests assessed statistical significance of differences, with significance threshold p < 0.05. Burnout was operationally defined as sustained stress > 80 (top 20% of stress scale).</p>
+    <p>We computed mean and standard error across 5 runs for each scenario. Effect sizes were calculated as (Baseline - Intervention) / Baseline × 100%. We used paired t-tests to check if differences were statistically significant (p < 0.05). We defined burnout as stress above 80 (top 20% of the stress scale).</p>
 
     <h2>3. RESULTS</h2>
 
@@ -461,30 +437,30 @@
             </tr>
             <tr>
                 <td>0.8 (High)</td>
-                <td>-65.2%</td>
-                <td>-6.0</td>
+                <td>-22.0%</td>
+                <td>-4.0</td>
                 <td>Echo chamber</td>
             </tr>
         </tbody>
     </table>
 
-    <p>Intervention effectiveness scales dramatically with conformity. In echo chamber environments (β = 0.8, typical of highly conformist settings like high schools), targeting influencers becomes extremely effective (-65.2% stress), eliminating all burnout cases. This suggests that optimal intervention strategies are context-dependent rather than universally applicable.</p>
+    <p>Intervention effectiveness scales with conformity. In echo chamber environments (β = 0.8, typical of highly conformist settings like high schools), targeting influencers achieves 22% stress reduction with only 1 burnout case. This suggests that optimal intervention strategies are context-dependent rather than universally applicable.</p>
 
     <h2>4. DISCUSSION</h2>
 
     <h3>4.1 Interpretation of Main Findings</h3>
 
-    <p>Our primary result - that targeting 5% of highly connected individuals reduces network stress by 5.9% - validates the hypothesis that digital stress exhibits measurable contagion dynamics amenable to network-based interventions. The effect size, while modest, represents meaningful impact given the minimal intervention coverage. Extrapolating to a campus of 1,000 students, identifying and supporting 50 key individuals could reduce stress for hundreds.</p>
+    <p>Our main finding is that targeting 5% of highly connected people reduces network stress by 5.9%. This supports our idea that digital stress spreads through networks in ways we can measure and address. While the effect is modest, it's meaningful given that we only worked with 5% of the population. On a campus of 1,000 students, this would mean helping 50 key people could reduce stress for hundreds of others.</p>
 
-    <p>However, the targeting paradox reveals critical limitations of influence-maximization approaches. Optimizing for average outcomes can worsen tail risk (burnout), creating an equity-efficiency trade-off. This finding parallels recent critiques of targeted interventions in public health, where focusing on high-risk individuals may neglect systemic factors affecting vulnerable populations (Frohlich & Potvin, 2008).</p>
+    <p>However, the targeting paradox shows important limitations of this approach. Optimizing for average outcomes can actually make worst-case outcomes (burnout) worse, creating a trade-off between efficiency and equity. This finding matches recent critiques of targeted interventions in public health, where focusing only on high-risk individuals can neglect systemic factors affecting vulnerable populations (Frohlich & Potvin, 2008).</p>
 
     <h3>4.2 Mechanisms Underlying the Paradox</h3>
 
     <p>We attribute the paradox to dual roles of network hubs. Influencers act as stress amplifiers (broadcasting to many neighbors) but simultaneously as social infrastructure (providing connection and support). Intervention creates asymmetric effects:</p>
 
     <ul>
-        <li><strong>Positive network effect:</strong> Reduced broadcasting lowers average stress (first-order effect)</li>
-        <li><strong>Negative support loss:</strong> Neighbors lose social connection, increasing individual vulnerability (second-order effect)</li>
+        <li>Positive network effect: Reduced broadcasting lowers average stress (first-order effect)</li>
+        <li>Negative support loss: Neighbors lose social connection, increasing individual vulnerability (second-order effect)</li>
     </ul>
 
     <p>The negative effect concentrates among highly dependent individuals who cross the burnout threshold. This mechanism suggests that interventions should couple usage reduction with maintained social engagement - a nuance not captured in simple "digital detox" approaches.</p>
@@ -493,39 +469,39 @@
 
     <p>Our findings suggest three design principles for digital wellness interventions:</p>
 
-    <p><strong>1. Hybrid Targeting:</strong> Combine network analysis to identify influencers with vulnerability screening to protect at-risk individuals. Monitor both average metrics and tail outcomes.</p>
+    <p>1. Hybrid Targeting: Combine network analysis to identify influencers with vulnerability screening to protect at-risk individuals. Monitor both average metrics and worst-case outcomes.</p>
 
-    <p><strong>2. Context-Aware Strategies:</strong> Intervention design should consider population conformity levels. In echo chamber environments (dormitories, tight-knit majors), targeting influencers maximizes impact. In diverse, loosely connected populations, collective campaigns prove more effective.</p>
+    <p>2. Context-Aware Strategies: Intervention design should consider how conformist the population is. In echo chamber environments like dormitories or tight-knit majors, targeting influencers works more effectively (22% reduction). In diverse, loosely connected populations, collective campaigns are more effective.</p>
 
-    <p><strong>3. Preserve Social Infrastructure:</strong> When intervening on central individuals, maintain their social connectivity while reducing stress broadcasting. For example, encourage synchronous activities (video calls) over asynchronous stress sharing (venting posts).</p>
+    <p>3. Preserve Social Infrastructure: When intervening on central individuals, keep their social connections active while reducing stress broadcasting. For example, encourage direct communication like video calls rather than asynchronous stress sharing through posts.</p>
 
     <h3>4.4 Limitations and Future Directions</h3>
 
-    <p>Several limitations constrain interpretation. First, stress dynamics are theoretical constructs calibrated from literature rather than direct measurements of student stress propagation. Validation requires longitudinal Experience Sampling Method (ESM) data tracking actual stress contagion in student networks.</p>
+    <p>Our work has several limitations. First, the stress dynamics are theoretical constructs based on literature rather than direct measurements of how stress actually spreads among students. We would need longitudinal data using methods like Experience Sampling to validate whether stress really spreads this way in student networks.</p>
 
-    <p>Second, our static network assumption ignores dynamic friendship formation and dissolution. Real social networks exhibit temporal evolution that could amplify or dampen intervention effects. Future work should incorporate dynamic network models where connections change based on stress similarity or intervention participation.</p>
+    <p>Second, we assume the network stays the same, but real friendships form and break over time. Real social networks change in ways that could make interventions work better or worse. Future work should test models where friendships change based on shared stress levels or who joins interventions.</p>
 
-    <p>Third, we model stress transmission as linear, but real contagion may exhibit threshold effects (complex contagion) where multiple reinforcing exposures are required. Testing non-linear transmission functions could reveal conditions where targeting strategies become more or less effective.</p>
+    <p>Third, we model stress transmission as linear, but real contagion might require thresholds where you need multiple stressed friends before it affects you. Testing non-linear transmission could show when targeting strategies work better or worse.</p>
 
-    <p>Fourth, all simulations use a single network topology (seed=42). While we vary temporal stochasticity across 5 seeds, structural robustness requires testing across multiple network realizations with different clustering patterns and degree distributions.</p>
+    <p>Fourth, all our simulations use one network structure (seed=42). While we vary the random day-to-day noise across 5 seeds, we should test multiple different network structures with different clustering patterns to see if results hold up.</p>
 
-    <p>Finally, our intervention represents an idealized compliance scenario. Real-world adoption requires addressing motivation, sustainability, and potential backlash effects not modeled here.</p>
+    <p>Finally, we assume perfect compliance with the intervention. Real adoption would face issues with motivation, long-term sustainability, and possible backlash that we don't model.</p>
 
     <h3>4.5 Broader Implications for Social Computing</h3>
 
-    <p>This work demonstrates that agent-based modeling can bridge individual psychology and network dynamics, providing a computational laboratory for testing intervention hypotheses before deployment. The targeting paradox illustrates how network interventions can produce counterintuitive emergent effects not predictable from individual-level analysis alone.</p>
+    <p>This work shows that agent-based modeling can connect individual psychology with network dynamics, giving us a way to test intervention ideas computationally before trying them in the real world. The targeting paradox is a good example of how network interventions can have unexpected emergent effects that you wouldn't predict just by looking at individuals.</p>
 
-    <p>More broadly, our findings contribute to ongoing debates about optimal intervention granularity in social systems. The dramatic superiority of collective action (5× better than targeted) when peer influence is moderate suggests that for many behavioral health challenges, population-wide approaches may outperform clever optimization. This echoes Rose's "prevention paradox" in epidemiology: small changes across everyone often beats large changes in high-risk subgroups.</p>
+    <p>More broadly, our findings add to debates about how to design interventions in social systems. The fact that collective action worked 5 times better than targeted intervention (when peer influence is moderate) suggests that for many behavioral health problems, getting everyone to change a little might beat getting a few people to change a lot. This matches what's called the "prevention paradox" - small changes across a whole population often work better than big changes in high-risk groups.</p>
 
-    <p>However, the context-dependence we observed (β = 0.8 reverses this relationship) indicates no universal strategy. Effective intervention design requires understanding both network topology and behavioral coupling strength - a combination of structural and psychological analysis.</p>
+    <p>But we also found this is context-dependent. When we increased peer influence to β = 0.8, targeting influencers became way more effective. This means there's no one-size-fits-all strategy. Good intervention design needs to understand both the network structure and how strongly people influence each other.</p>
 
     <h2>5. CONCLUSIONS</h2>
 
-    <p>We developed and validated an agent-based model of digital stress propagation that combines empirical behavioral data with theoretical contagion dynamics. Our simulations demonstrate that targeting network influencers produces measurable stress reduction (5.9%, p < 0.05) but reveals a fundamental trade-off: optimizing average outcomes can worsen extreme cases. Collective action interventions substantially outperform targeted approaches when peer influence is moderate, but targeting becomes highly effective in conformist environments.</p>
+    <p>We built and tested an agent-based model of how digital stress spreads that combines real behavioral data with theories about social contagion. Our simulations show that targeting network influencers produces measurable stress reduction (5.9%, p < 0.05) but reveals a key trade-off: improving average outcomes can make extreme cases worse. Getting everyone to participate works much better than targeting when peer influence is moderate, but targeting works more effectively in conformist groups (22% reduction with only 1 burnout).</p>
 
-    <p>These findings suggest that effective digital wellness programs require hybrid strategies that leverage network structure while protecting vulnerable individuals, with specific design choices contingent on population context. Future work should validate contagion parameters using real longitudinal data, test dynamic network models, and investigate non-linear transmission mechanisms.</p>
+    <p>These findings suggest that good digital wellness programs need mixed strategies that use network structure while protecting vulnerable people, with specific choices depending on the group context. Future work should test our assumptions using real data over time, try dynamic network models, and look at non-linear ways stress might spread.</p>
 
-    <p>The broader contribution of this research lies in demonstrating how computational social science methods can reveal non-obvious emergent effects in social systems, providing evidence to guide resource allocation in mental health interventions. As digital technologies continue to reshape social interaction, network-aware approaches to wellbeing become increasingly necessary.</p>
+    <p>The main contribution of this research is showing how computer simulations can reveal unexpected effects in social systems, giving evidence to guide how we allocate resources for mental health interventions. As digital technologies keep changing how people interact, we increasingly need approaches to wellbeing that account for networks.</p>
 
     <h2>REFERENCES</h2>
 
