@@ -53,15 +53,15 @@ def create_network_visualization():
     fig, ax = plt.subplots(figsize=(14, 10))
     
     # Draw edges
-    nx.draw_networkx_edges(G, pos, alpha=0.15, width=0.8, ax=ax, edge_color='#bdc3c7')
+    nx.draw_networkx_edges(G, pos, alpha=0.12, width=0.7, ax=ax, edge_color='#bdc3c7')
     
     # Draw regular nodes
     regular_nodes = [n for n in G.nodes() if n not in influencer_ids]
     nx.draw_networkx_nodes(G, pos, nodelist=regular_nodes,
                            node_color=[persona_colors.get(G.nodes[node].get('persona', 'Unknown'), '#95a5a6') 
                                       for node in regular_nodes],
-                           node_size=120, alpha=0.85, ax=ax, 
-                           linewidths=1, edgecolors='white')
+                           node_size=140, alpha=0.9, ax=ax, 
+                           linewidths=1.5, edgecolors='white')
     
     # Draw influencer nodes (highlighted)
     nx.draw_networkx_nodes(G, pos, nodelist=list(influencer_ids),
@@ -74,7 +74,7 @@ def create_network_visualization():
                             font_weight='bold', font_color='black', ax=ax)
     
     ax.set_title('Social Network: Digital Contagion Simulator\n(100 Agents with Homophily-Based Connections)',
-                 fontsize=16, fontweight='bold', pad=20)
+                 fontsize=17, fontweight='bold', pad=20)
     ax.axis('off')
     
     # Legend
@@ -86,13 +86,13 @@ def create_network_visualization():
     legend_elements.append(Patch(facecolor='gold', label='Top 5 Influencers', 
                                   edgecolor='#e67e22', linewidth=2))
     
-    ax.legend(handles=legend_elements, loc='upper left', fontsize=11, 
-              framealpha=0.95, edgecolor='black')
+    ax.legend(handles=legend_elements, loc='upper left', fontsize=12, 
+              framealpha=0.98, edgecolor='black', title='Persona Legend', title_fontsize=12)
     
     # Add network stats
     stats_text = f"Nodes: {G.number_of_nodes()} | Edges: {G.number_of_edges()} | Avg Degree: {2*G.number_of_edges()/G.number_of_nodes():.1f}"
     ax.text(0.5, -0.05, stats_text, ha='center', va='top', 
-            transform=ax.transAxes, fontsize=11, style='italic')
+            transform=ax.transAxes, fontsize=12, fontweight='semibold')
     
     plt.tight_layout()
     output_path = OUTPUT_DIR / "viz_network_final.png"
@@ -119,22 +119,31 @@ def create_temporal_heatmap():
     fig, ax = plt.subplots(figsize=(16, 10))
     
     # Create heatmap
-    sns.heatmap(stress_matrix, cmap='YlOrRd', vmin=0, vmax=100,
+    heatmap = sns.heatmap(stress_matrix, cmap='YlOrRd', vmin=0, vmax=100,
                 cbar_kws={'label': 'Stress Level (0-100)', 'shrink': 0.8},
                 xticklabels=5, yticklabels=10, ax=ax, linewidths=0)
     
-    ax.set_xlabel('Day', fontsize=13, fontweight='bold')
-    ax.set_ylabel('Agent ID (sorted by final stress)', fontsize=13, fontweight='bold')
+    ax.set_xlabel('Day', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Agent ID (sorted by final stress)', fontsize=14, fontweight='bold')
     ax.set_title('Temporal Heatmap: 30-Day Stress Contagion Evolution\n(Baseline Scenario - No Intervention)',
-                 fontsize=15, fontweight='bold', pad=15)
+                 fontsize=16, fontweight='bold', pad=18)
+    ax.tick_params(axis='both', labelsize=12)
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_weight('semibold')
+    
+    cbar = heatmap.collections[0].colorbar
+    cbar.ax.tick_params(labelsize=12)
+    cbar.set_label('Stress Level (0-100)', fontsize=13, fontweight='bold')
+    for label in cbar.ax.get_yticklabels():
+        label.set_weight('semibold')
     
     # Add horizontal lines to separate stress zones
     high_stress_agents = (final_stress > 60).sum()
     if high_stress_agents > 0:
-        ax.axhline(y=high_stress_agents, color='white', linewidth=2, linestyle='--', alpha=0.7)
+        ax.axhline(y=high_stress_agents, color='#00b894', linewidth=2.5, linestyle='--', alpha=0.85)
         ax.text(31, high_stress_agents/2, 'High\nStress', va='center', ha='left', 
-                fontsize=10, fontweight='bold', color='white',
-                bbox=dict(boxstyle='round', facecolor='red', alpha=0.7))
+                fontsize=11, fontweight='bold', color='white',
+                bbox=dict(boxstyle='round', facecolor='#00b894', alpha=0.9, edgecolor='white', linewidth=1))
     
     plt.tight_layout()
     output_path = OUTPUT_DIR / "viz_temporal_heatmap_final.png"
@@ -167,19 +176,21 @@ def create_intervention_comparison():
     
     # Plot baseline
     ax.plot(baseline_daily.index, baseline_daily['mean'], 
-            linewidth=3, color='#e74c3c', label='Baseline (No Intervention)', marker='o', markersize=5)
+            linewidth=3.5, color='#e74c3c', label='Baseline (No Intervention)', marker='o', markersize=7,
+            markeredgewidth=1, markeredgecolor='#b03a2e')
     ax.fill_between(baseline_daily.index,
                      baseline_daily['mean'] - baseline_daily['std'],
                      baseline_daily['mean'] + baseline_daily['std'],
-                     alpha=0.2, color='#e74c3c')
+                     alpha=0.22, color='#e74c3c')
     
     # Plot intervention
     ax.plot(intervention_daily.index, intervention_daily['mean'],
-            linewidth=3, color='#27ae60', label='Influencer Quarantine', marker='s', markersize=5)
+            linewidth=3.5, color='#27ae60', label='Influencer Quarantine', marker='s', markersize=7,
+            markeredgewidth=1, markeredgecolor='#1f8f4e')
     ax.fill_between(intervention_daily.index,
                      intervention_daily['mean'] - intervention_daily['std'],
                      intervention_daily['mean'] + intervention_daily['std'],
-                     alpha=0.2, color='#27ae60')
+                     alpha=0.22, color='#27ae60')
     
     # Mark intervention start
     ax.axvline(x=intervention_day, color='#3498db', linestyle='--', linewidth=2, 
@@ -196,18 +207,22 @@ def create_intervention_comparison():
                 bbox=dict(boxstyle='round', facecolor='white', edgecolor='#e74c3c', alpha=0.9))
     
     ax.annotate(f'Intervention Final\nStress: {final_intervention:.1f}\n({reduction_pct:.1f}% reduction)',
-                xy=(30, final_intervention), xytext=(26, final_intervention - 8),
+                xy=(30, final_intervention), xytext=(26, final_intervention - 14),
                 arrowprops=dict(arrowstyle='->', color='#27ae60', lw=2),
                 fontsize=10, fontweight='bold', color='#27ae60',
                 bbox=dict(boxstyle='round', facecolor='white', edgecolor='#27ae60', alpha=0.9))
     
-    ax.set_xlabel('Day', fontsize=13, fontweight='bold')
-    ax.set_ylabel('Average Network Stress', fontsize=13, fontweight='bold')
+    ax.set_xlabel('Day', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Average Network Stress', fontsize=14, fontweight='bold')
     ax.set_title('Intervention Effectiveness: Targeting Top Influencers\n(Average Stress ± Standard Deviation Across Network)',
-                 fontsize=15, fontweight='bold', pad=15)
-    ax.legend(fontsize=11, loc='upper right', framealpha=0.95, edgecolor='black')
-    ax.grid(alpha=0.3, linestyle='--')
+                 fontsize=16, fontweight='bold', pad=18)
+    ax.legend(fontsize=11, loc='upper left', framealpha=0.95, edgecolor='black')
+    ax.grid(alpha=0.35, linestyle='--', linewidth=0.9)
     ax.set_xlim(-0.5, 30.5)
+    ax.set_ylim(0, 100)
+    ax.tick_params(labelsize=12)
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_weight('semibold')
     
     plt.tight_layout()
     output_path = OUTPUT_DIR / "viz_intervention_comparison_final.png"
