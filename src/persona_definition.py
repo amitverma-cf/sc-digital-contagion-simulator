@@ -68,23 +68,28 @@ def determine_optimal_clusters(X_scaled, max_k=8):
         silhouette_scores.append(silhouette_score(X_scaled, kmeans.labels_))
     
     # Plot elbow curve
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
     
-    ax1.plot(K_range, inertias, 'bo-', linewidth=2, markersize=8)
-    ax1.set_xlabel('Number of Clusters (k)', fontsize=11)
-    ax1.set_ylabel('Inertia (Within-Cluster Sum of Squares)', fontsize=11)
-    ax1.set_title('Elbow Method', fontsize=12, fontweight='bold')
-    ax1.grid(alpha=0.3)
+    ax1.plot(K_range, inertias, 'bo-', linewidth=3, markersize=8, marker='o', markeredgewidth=2, markeredgecolor='#1e40af')
+    ax1.set_xlabel('Number of Clusters (k)', fontsize=12, fontweight='bold')
+    ax1.set_ylabel('Inertia (Within-Cluster Sum of Squares)', fontsize=12, fontweight='bold')
+    ax1.set_title('Elbow Method for Optimal k', fontsize=13, fontweight='bold', pad=10)
+    ax1.grid(True, alpha=0.4, linestyle='--')
+    ax1.tick_params(labelsize=10)
+    ax1.set_xlim(1.5, max_k + 0.5)
     
-    ax2.plot(K_range, silhouette_scores, 'ro-', linewidth=2, markersize=8)
-    ax2.set_xlabel('Number of Clusters (k)', fontsize=11)
-    ax2.set_ylabel('Silhouette Score', fontsize=11)
-    ax2.set_title('Silhouette Analysis', fontsize=12, fontweight='bold')
-    ax2.grid(alpha=0.3)
+    ax2.plot(K_range, silhouette_scores, 'ro-', linewidth=3, markersize=8, marker='s', markeredgewidth=2, markeredgecolor='#b91c1c')
+    ax2.set_xlabel('Number of Clusters (k)', fontsize=12, fontweight='bold')
+    ax2.set_ylabel('Silhouette Score', fontsize=12, fontweight='bold')
+    ax2.set_title('Silhouette Analysis', fontsize=13, fontweight='bold', pad=10)
+    ax2.grid(True, alpha=0.4, linestyle='--')
+    ax2.tick_params(labelsize=10)
+    ax2.set_xlim(1.5, max_k + 0.5)
     
+    plt.suptitle('Clustering Optimization: Determining Optimal Number of Personas', fontsize=14, fontweight='bold', y=1.02)
     plt.tight_layout()
     output_path = OUTPUT_DIR / "clustering_optimization.png"
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"✓ Saved clustering optimization plots to {output_path}")
     plt.close()
     
@@ -173,60 +178,75 @@ def visualize_personas(df, cluster_labels, personas, cluster_to_persona):
     df_clustered['Persona'] = df_clustered['Cluster'].map(cluster_to_persona)
     
     # Persona comparison radar chart
-    fig, axes = plt.subplots(2, 3, figsize=(18, 12))
+    fig, axes = plt.subplots(2, 3, figsize=(16, 10))
     
     # 1. Screen Time distribution by persona
     ax = axes[0, 0]
     persona_order = ['Minimalist', 'Moderate User', 'Active User', 'Heavy User', 'Digital Addict']
     df_clustered['Persona'] = pd.Categorical(df_clustered['Persona'], categories=persona_order, ordered=True)
-    df_clustered.boxplot(column='Screen On Time (hours/day)', by='Persona', ax=ax)
-    ax.set_xlabel('Persona', fontsize=10)
-    ax.set_ylabel('Screen Time (hours/day)', fontsize=10)
-    ax.set_title('Screen Time by Persona', fontsize=11, fontweight='bold')
+    bp = df_clustered.boxplot(column='Screen On Time (hours/day)', by='Persona', ax=ax, 
+                             patch_artist=True, boxprops=dict(facecolor='#3B82F6', alpha=0.7),
+                             medianprops=dict(color='black', linewidth=2))
+    ax.set_xlabel('Persona', fontsize=11, fontweight='bold')
+    ax.set_ylabel('Screen Time (hours/day)', fontsize=11, fontweight='bold')
+    ax.set_title('Screen Time Distribution', fontsize=12, fontweight='bold', pad=10)
     plt.sca(ax)
     plt.xticks(rotation=45, ha='right')
+    ax.grid(True, alpha=0.4, linestyle='--')
+    ax.tick_params(labelsize=9)
     
     # 2. App Usage distribution
     ax = axes[0, 1]
-    df_clustered.boxplot(column='App Usage Time (min/day)', by='Persona', ax=ax)
-    ax.set_xlabel('Persona', fontsize=10)
-    ax.set_ylabel('App Usage (min/day)', fontsize=10)
-    ax.set_title('App Usage by Persona', fontsize=11, fontweight='bold')
+    bp = df_clustered.boxplot(column='App Usage Time (min/day)', by='Persona', ax=ax,
+                             patch_artist=True, boxprops=dict(facecolor='#059669', alpha=0.7),
+                             medianprops=dict(color='black', linewidth=2))
+    ax.set_xlabel('Persona', fontsize=11, fontweight='bold')
+    ax.set_ylabel('App Usage (min/day)', fontsize=11, fontweight='bold')
+    ax.set_title('App Usage Distribution', fontsize=12, fontweight='bold', pad=10)
     plt.sca(ax)
     plt.xticks(rotation=45, ha='right')
+    ax.grid(True, alpha=0.4, linestyle='--')
+    ax.tick_params(labelsize=9)
     
     # 3. Battery Drain distribution
     ax = axes[0, 2]
-    df_clustered.boxplot(column='Battery Drain (mAh/day)', by='Persona', ax=ax)
-    ax.set_xlabel('Persona', fontsize=10)
-    ax.set_ylabel('Battery Drain (mAh/day)', fontsize=10)
-    ax.set_title('Battery Drain by Persona', fontsize=11, fontweight='bold')
+    bp = df_clustered.boxplot(column='Battery Drain (mAh/day)', by='Persona', ax=ax,
+                             patch_artist=True, boxprops=dict(facecolor='#F59E0B', alpha=0.7),
+                             medianprops=dict(color='black', linewidth=2))
+    ax.set_xlabel('Persona', fontsize=11, fontweight='bold')
+    ax.set_ylabel('Battery Drain (mAh/day)', fontsize=11, fontweight='bold')
+    ax.set_title('Battery Drain Distribution', fontsize=12, fontweight='bold', pad=10)
     plt.sca(ax)
     plt.xticks(rotation=45, ha='right')
+    ax.grid(True, alpha=0.4, linestyle='--')
+    ax.tick_params(labelsize=9)
     
     # 4. Persona size distribution
     ax = axes[1, 0]
     persona_counts = df_clustered['Persona'].value_counts()[persona_order]
-    colors = plt.cm.Set3(range(len(persona_order)))
-    ax.bar(persona_order, persona_counts.values, color=colors, edgecolor='black', linewidth=1.5)
-    ax.set_xlabel('Persona', fontsize=10)
-    ax.set_ylabel('Count', fontsize=10)
-    ax.set_title('Persona Distribution', fontsize=11, fontweight='bold')
-    ax.grid(axis='y', alpha=0.3)
+    colors = ['#6B7280', '#3B82F6', '#059669', '#F59E0B', '#DC2626']
+    bars = ax.bar(persona_order, persona_counts.values, color=colors, edgecolor='black', linewidth=1.5, alpha=0.8)
+    ax.set_xlabel('Persona', fontsize=11, fontweight='bold')
+    ax.set_ylabel('Count', fontsize=11, fontweight='bold')
+    ax.set_title('Persona Population Size', fontsize=12, fontweight='bold', pad=10)
+    ax.grid(axis='y', alpha=0.4, linestyle='--')
     plt.sca(ax)
     plt.xticks(rotation=45, ha='right')
+    ax.tick_params(labelsize=9)
     
     # 5. User Behavior Class by Persona
     ax = axes[1, 1]
     behavior_persona = df_clustered.groupby(['Persona', 'User Behavior Class']).size().unstack(fill_value=0)
     behavior_persona = behavior_persona.reindex(persona_order)
-    behavior_persona.plot(kind='bar', stacked=True, ax=ax, colormap='viridis')
-    ax.set_xlabel('Persona', fontsize=10)
-    ax.set_ylabel('Count', fontsize=10)
-    ax.set_title('User Behavior Class Distribution', fontsize=11, fontweight='bold')
-    ax.legend(title='Behavior Class', bbox_to_anchor=(1.05, 1), loc='upper left')
+    behavior_persona.plot(kind='bar', stacked=True, ax=ax, colormap='viridis', alpha=0.8, edgecolor='black', linewidth=0.5)
+    ax.set_xlabel('Persona', fontsize=11, fontweight='bold')
+    ax.set_ylabel('Count', fontsize=11, fontweight='bold')
+    ax.set_title('Behavior Class Distribution', fontsize=12, fontweight='bold', pad=10)
+    ax.legend(title='Behavior Class', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8)
     plt.sca(ax)
     plt.xticks(rotation=45, ha='right')
+    ax.grid(True, alpha=0.4, linestyle='--')
+    ax.tick_params(labelsize=9)
     
     # 6. PCA visualization
     ax = axes[1, 2]
@@ -240,19 +260,22 @@ def visualize_personas(df, cluster_labels, personas, cluster_to_persona):
     pca = PCA(n_components=2)
     X_pca = pca.fit_transform(X_scaled)
     
-    for persona in persona_order:
+    colors = ['#6B7280', '#3B82F6', '#059669', '#F59E0B', '#DC2626']
+    for i, persona in enumerate(persona_order):
         mask = df_clustered['Persona'] == persona
-        ax.scatter(X_pca[mask, 0], X_pca[mask, 1], label=persona, alpha=0.6, s=30)
+        ax.scatter(X_pca[mask, 0], X_pca[mask, 1], label=persona, alpha=0.7, s=40, color=colors[i], edgecolor='black', linewidth=0.5)
     
-    ax.set_xlabel(f'PC1 ({pca.explained_variance_ratio_[0]*100:.1f}%)', fontsize=10)
-    ax.set_ylabel(f'PC2 ({pca.explained_variance_ratio_[1]*100:.1f}%)', fontsize=10)
-    ax.set_title('PCA: Persona Separation', fontsize=11, fontweight='bold')
+    ax.set_xlabel(f'PC1 ({pca.explained_variance_ratio_[0]*100:.1f}%)', fontsize=11, fontweight='bold')
+    ax.set_ylabel(f'PC2 ({pca.explained_variance_ratio_[1]*100:.1f}%)', fontsize=11, fontweight='bold')
+    ax.set_title('PCA: Persona Separation', fontsize=12, fontweight='bold', pad=10)
     ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8)
-    ax.grid(alpha=0.3)
+    ax.grid(True, alpha=0.4, linestyle='--')
+    ax.tick_params(labelsize=9)
     
+    plt.suptitle('Persona Analysis: Behavioral Archetypes from Clustering', fontsize=14, fontweight='bold', y=0.98)
     plt.tight_layout()
     output_path = OUTPUT_DIR / "persona_analysis.png"
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"✓ Saved persona analysis plots to {output_path}")
     plt.close()
 

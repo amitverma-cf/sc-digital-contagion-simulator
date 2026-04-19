@@ -262,11 +262,11 @@ class NetworkBuilder:
         
         # Color map for personas
         persona_colors = {
-            'Minimalist': '#3498db',
-            'Moderate User': '#2ecc71',
-            'Active User': '#f39c12',
-            'Heavy User': '#e74c3c',
-            'Digital Addict': '#9b59b6'
+            'Minimalist': '#6B7280',
+            'Moderate User': '#3B82F6', 
+            'Active User': '#059669',
+            'Heavy User': '#F59E0B',
+            'Digital Addict': '#DC2626'
         }
         
         node_colors = [persona_colors[G.nodes[node]['persona']] for node in G.nodes()]
@@ -276,40 +276,41 @@ class NetworkBuilder:
         
         # Left plot: Color by persona
         ax = axes[0]
-        nx.draw_networkx_edges(G, pos, alpha=0.2, width=0.5, ax=ax)
-        nx.draw_networkx_nodes(G, pos, node_color=node_colors, node_size=100, 
-                               alpha=0.8, ax=ax, linewidths=0.5, edgecolors='black')
+        nx.draw_networkx_edges(G, pos, alpha=0.3, width=1, ax=ax, edge_color='#374151')
+        nx.draw_networkx_nodes(G, pos, node_color=node_colors, node_size=120, 
+                               alpha=0.9, ax=ax, linewidths=1, edgecolors='black')
         
-        # Highlight influencers
+        # Highlight influencers with better styling
         nx.draw_networkx_nodes(G, pos, nodelist=influencer_ids, 
-                               node_color='gold', node_size=300, 
-                               alpha=1.0, ax=ax, linewidths=2, edgecolors='black')
+                               node_color='#FCD34D', node_size=350, 
+                               alpha=1.0, ax=ax, linewidths=3, edgecolors='#92400E')
         
-        ax.set_title('Social Network (Colored by Persona)', fontsize=14, fontweight='bold')
+        ax.set_title('Social Network Topology\n(Colored by Persona)', fontsize=14, fontweight='bold', pad=10)
         ax.axis('off')
         
         # Legend for personas
         from matplotlib.patches import Patch
-        legend_elements = [Patch(facecolor=color, label=persona, edgecolor='black') 
+        legend_elements = [Patch(facecolor=color, label=persona, edgecolor='black', linewidth=1) 
                           for persona, color in persona_colors.items()]
-        legend_elements.append(Patch(facecolor='gold', label='Top Influencers', edgecolor='black'))
-        ax.legend(handles=legend_elements, loc='upper left', fontsize=9)
+        legend_elements.append(Patch(facecolor='#FCD34D', label='Top Influencers', edgecolor='#92400E', linewidth=2))
+        ax.legend(handles=legend_elements, loc='upper left', fontsize=10, framealpha=0.95)
         
         # Right plot: Node size by influence
         ax = axes[1]
         influence_scores = nx.get_node_attributes(G, 'influence_score')
-        node_sizes = [influence_scores[node] * 1000 for node in G.nodes()]
+        node_sizes = [influence_scores[node] * 1200 + 50 for node in G.nodes()]  # Better scaling
         
-        nx.draw_networkx_edges(G, pos, alpha=0.2, width=0.5, ax=ax)
+        nx.draw_networkx_edges(G, pos, alpha=0.3, width=1, ax=ax, edge_color='#374151')
         nx.draw_networkx_nodes(G, pos, node_color=node_colors, node_size=node_sizes, 
-                               alpha=0.8, ax=ax, linewidths=0.5, edgecolors='black')
+                               alpha=0.9, ax=ax, linewidths=1, edgecolors='black')
         
-        ax.set_title('Social Network (Node Size = Influence)', fontsize=14, fontweight='bold')
+        ax.set_title('Social Network Topology\n(Node Size = Influence Score)', fontsize=14, fontweight='bold', pad=10)
         ax.axis('off')
         
+        plt.suptitle('Network Analysis: Homophily-Based Social Structure', fontsize=16, fontweight='bold', y=0.98)
         plt.tight_layout()
         output_path = OUTPUT_DIR / "network_topology.png"
-        plt.savefig(output_path, dpi=300, bbox_inches='tight')
+        plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
         print(f"✓ Saved network visualization to {output_path}")
         plt.close()
         
@@ -319,8 +320,9 @@ class NetworkBuilder:
         degrees = [deg for node, deg in G.degree()]
         
         ax = axes[0]
-        ax.hist(degrees, bins=range(min(degrees), max(degrees) + 2), 
-                edgecolor='black', alpha=0.7, color='steelblue')
+        # Use bar plot for better visibility
+        unique_degrees, counts = np.unique(degrees, return_counts=True)
+        ax.bar(unique_degrees, counts, edgecolor='black', alpha=0.8, color='steelblue', width=0.8)
         ax.set_xlabel('Degree (Number of Friends)', fontsize=11)
         ax.set_ylabel('Frequency', fontsize=11)
         ax.set_title('Degree Distribution', fontsize=12, fontweight='bold')
@@ -328,6 +330,7 @@ class NetworkBuilder:
                    linewidth=2, label=f'Mean: {np.mean(degrees):.2f}')
         ax.legend()
         ax.grid(alpha=0.3)
+        ax.set_xticks(unique_degrees)
         
         # Degree by persona
         ax = axes[1]
@@ -337,7 +340,7 @@ class NetworkBuilder:
             persona_degrees[persona].append(G.degree(node))
         
         positions = range(1, len(persona_colors) + 1)
-        bp = ax.boxplot(persona_degrees.values(), labels=persona_colors.keys(), 
+        bp = ax.boxplot(persona_degrees.values(), tick_labels=persona_colors.keys(), 
                         patch_artist=True, showmeans=True)
         
         for patch, persona in zip(bp['boxes'], persona_colors.keys()):
@@ -348,11 +351,11 @@ class NetworkBuilder:
         ax.set_ylabel('Degree', fontsize=11)
         ax.set_title('Degree Distribution by Persona', fontsize=12, fontweight='bold')
         ax.grid(axis='y', alpha=0.3)
-        plt.xticks(rotation=45, ha='right')
         
+        plt.suptitle('Degree Analysis: Network Connectivity Patterns', fontsize=14, fontweight='bold', y=1.02)
         plt.tight_layout()
         output_path = OUTPUT_DIR / "degree_distribution.png"
-        plt.savefig(output_path, dpi=300, bbox_inches='tight')
+        plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
         print(f"✓ Saved degree distribution to {output_path}")
         plt.close()
     
