@@ -216,7 +216,7 @@ def create_intervention_comparison():
     plt.close()
 
 def create_supplementary_visualizations():
-    """Create additional supporting visualizations"""
+    """Create additional supporting visualizations with enhanced clarity"""
     print("\n" + "="*60)
     print("CREATING SUPPLEMENTARY VISUALIZATIONS")
     print("="*60)
@@ -224,81 +224,125 @@ def create_supplementary_visualizations():
     # Load data
     baseline_df = pd.read_csv(BASELINE_RUN0)
     
-    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+    fig, axes = plt.subplots(2, 2, figsize=(18, 14))
     
-    # 1. Stress evolution by persona
+    # Color palette for personas
+    persona_colors = {
+        'Active User': '#3498db',
+        'Digital Addict': '#9b59b6',
+        'Heavy User': '#e74c3c',
+        'Minimalist': '#2ecc71',
+        'Moderate User': '#f39c12'
+    }
+    
+    # 1. Stress evolution by persona (TOP-LEFT)
     ax = axes[0, 0]
-    for persona in baseline_df['persona'].unique():
+    personas_sorted = sorted(baseline_df['persona'].unique())
+    for persona in personas_sorted:
         persona_data = baseline_df[baseline_df['persona'] == persona]
         daily_mean = persona_data.groupby('day')['stress'].mean()
-        ax.plot(daily_mean.index, daily_mean.values, linewidth=2.5, 
-                label=persona, marker='o', markersize=4, alpha=0.8)
+        color = persona_colors.get(persona, '#95a5a6')
+        ax.plot(daily_mean.index, daily_mean.values, linewidth=3.5, 
+                label=f"{persona} (n={len(persona_data)//31})", marker='o', markersize=6, 
+                alpha=0.85, color=color)
     
-    ax.set_xlabel('Day', fontsize=11, fontweight='bold')
-    ax.set_ylabel('Average Stress', fontsize=11, fontweight='bold')
-    ax.set_title('Stress Evolution by Persona', fontsize=12, fontweight='bold')
-    ax.legend(fontsize=9, loc='best')
-    ax.grid(alpha=0.3)
+    ax.set_xlabel('Day', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Average Stress Level', fontsize=14, fontweight='bold')
+    ax.set_title('Chart 1: Stress Evolution by Persona\n(Days 0-30)', fontsize=15, fontweight='bold', pad=15)
+    ax.legend(fontsize=11, loc='best', framealpha=0.95)
+    ax.grid(alpha=0.4, linestyle='--', linewidth=0.7)
+    ax.set_xlim(-0.5, 30.5)
+    ax.set_ylim(-5, 105)
+    ax.tick_params(labelsize=11)
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_weight('semibold')
     
-    # 2. Burnout count over time
+    # 2. Burnout count over time (TOP-RIGHT)
     ax = axes[0, 1]
-    baseline_burnout = baseline_df.groupby('day').apply(lambda x: (x['stress'] > 80).sum())
     intervention_df = pd.read_csv(INTERVENTION_RUN0)
+    baseline_burnout = baseline_df.groupby('day').apply(lambda x: (x['stress'] > 80).sum())
     intervention_burnout = intervention_df.groupby('day').apply(lambda x: (x['stress'] > 80).sum())
     
-    ax.plot(baseline_burnout.index, baseline_burnout.values, linewidth=3, 
-            color='#e74c3c', label='Baseline', marker='o')
-    ax.plot(intervention_burnout.index, intervention_burnout.values, linewidth=3,
-            color='#27ae60', label='Intervention', marker='s')
+    ax.plot(baseline_burnout.index, baseline_burnout.values, linewidth=4, 
+            color='#e74c3c', label='Baseline (No Intervention)', marker='o', markersize=8, alpha=0.85)
+    ax.plot(intervention_burnout.index, intervention_burnout.values, linewidth=4,
+            color='#27ae60', label='Intervention (Influencer Quarantine)', marker='s', markersize=8, alpha=0.85)
     
-    ax.set_xlabel('Day', fontsize=11, fontweight='bold')
-    ax.set_ylabel('Agents in Burnout (Stress > 80)', fontsize=11, fontweight='bold')
-    ax.set_title('Burnout Count Over Time', fontsize=12, fontweight='bold')
-    ax.legend(fontsize=10)
-    ax.grid(alpha=0.3)
-    ax.axvline(x=10, color='#3498db', linestyle='--', alpha=0.5, label='Intervention Start')
+    ax.set_xlabel('Day', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Number of Agents in Burnout\n(Stress > 80)', fontsize=14, fontweight='bold')
+    ax.set_title('Chart 2: Burnout Count Over Time\n(Baseline vs Intervention)', fontsize=15, fontweight='bold', pad=15)
+    ax.legend(fontsize=11, loc='upper left', framealpha=0.95)
+    ax.grid(alpha=0.4, linestyle='--', linewidth=0.7, axis='y')
+    ax.set_xlim(-0.5, 30.5)
+    ax.tick_params(labelsize=11)
+    ax.axvline(x=10, color='#3498db', linestyle=':', linewidth=2.5, alpha=0.6)
+    # Position intervention label close to the blue line
+    ax.text(11, ax.get_ylim()[1]*0.88, 'Intervention\nStart\n(Day 10)', fontsize=9, weight='semibold',
+            bbox=dict(boxstyle='round', facecolor='#3498db', alpha=0.85, edgecolor='#2980b9', linewidth=1.5),
+            ha='left', va='top')
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_weight('semibold')
     
-    # 3. Final stress distribution
+    # 3. Final stress distribution (BOTTOM-LEFT)
     ax = axes[1, 0]
     baseline_final = baseline_df[baseline_df['day'] == 30]['stress']
     intervention_final = intervention_df[intervention_df['day'] == 30]['stress']
     
-    ax.hist(baseline_final, bins=20, alpha=0.6, color='#e74c3c', 
-            label=f'Baseline (μ={baseline_final.mean():.1f})', edgecolor='black')
-    ax.hist(intervention_final, bins=20, alpha=0.6, color='#27ae60',
-            label=f'Intervention (μ={intervention_final.mean():.1f})', edgecolor='black')
+    ax.hist(baseline_final, bins=20, alpha=0.65, color='#e74c3c', 
+            label=f'Baseline (μ={baseline_final.mean():.2f}, σ={baseline_final.std():.2f})', 
+            edgecolor='darkred', linewidth=1.5)
+    ax.hist(intervention_final, bins=20, alpha=0.65, color='#27ae60',
+            label=f'Intervention (μ={intervention_final.mean():.2f}, σ={intervention_final.std():.2f})', 
+            edgecolor='darkgreen', linewidth=1.5)
     
-    ax.axvline(baseline_final.mean(), color='#e74c3c', linestyle='--', linewidth=2)
-    ax.axvline(intervention_final.mean(), color='#27ae60', linestyle='--', linewidth=2)
+    ax.axvline(baseline_final.mean(), color='#c0392b', linestyle='--', linewidth=3, alpha=0.9)
+    ax.axvline(intervention_final.mean(), color='#229954', linestyle='--', linewidth=3, alpha=0.9)
     
-    ax.set_xlabel('Final Stress (Day 30)', fontsize=11, fontweight='bold')
-    ax.set_ylabel('Number of Agents', fontsize=11, fontweight='bold')
-    ax.set_title('Final Stress Distribution Comparison', fontsize=12, fontweight='bold')
-    ax.legend(fontsize=10)
-    ax.grid(axis='y', alpha=0.3)
+    ax.set_xlabel('Final Stress Level (Day 30)', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Number of Agents', fontsize=14, fontweight='bold')
+    ax.set_title('Chart 3: Final Stress Distribution (Day 30)\n(Baseline vs Intervention)', 
+                 fontsize=15, fontweight='bold', pad=15)
+    ax.legend(fontsize=9, loc='upper left', framealpha=0.96, edgecolor='black', fancybox=True)
+    ax.grid(axis='y', alpha=0.4, linestyle='--', linewidth=0.7)
+    ax.tick_params(labelsize=11)
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_weight('semibold')
     
-    # 4. Peer influence analysis
+    # 4. Peer influence vs agent stress (BOTTOM-RIGHT)
     ax = axes[1, 1]
     baseline_sample = baseline_df[(baseline_df['day'] >= 15) & (baseline_df['day'] <= 20)]
     
-    ax.scatter(baseline_sample['peer_influence'], baseline_sample['stress'],
-               alpha=0.3, s=30, c=baseline_sample['day'], cmap='viridis')
+    scatter = ax.scatter(baseline_sample['peer_influence'], baseline_sample['stress'],
+               alpha=0.5, s=80, c=baseline_sample['day'], cmap='viridis', 
+               edgecolors='black', linewidth=0.6)
     
-    # Add trend line
+    # Add trend line with equation
     z = np.polyfit(baseline_sample['peer_influence'], baseline_sample['stress'], 1)
     p = np.poly1d(z)
     x_trend = np.linspace(baseline_sample['peer_influence'].min(), 
                           baseline_sample['peer_influence'].max(), 100)
-    ax.plot(x_trend, p(x_trend), "r--", linewidth=2, label=f'Trend: y={z[0]:.2f}x+{z[1]:.1f}')
+    ax.plot(x_trend, p(x_trend), color='#c0392b', linestyle='-', linewidth=3.5, 
+            label=f'Regression: y = {z[0]:.2f}x + {z[1]:.1f}', alpha=0.9, zorder=5)
     
-    ax.set_xlabel('Peer Influence (Neighbor Avg Stress)', fontsize=11, fontweight='bold')
-    ax.set_ylabel('Agent Stress', fontsize=11, fontweight='bold')
-    ax.set_title('Peer Influence vs Agent Stress (Days 15-20)', fontsize=12, fontweight='bold')
-    ax.legend(fontsize=10)
-    ax.grid(alpha=0.3)
+    ax.set_xlabel('Peer Influence\n(Average Neighbor Stress)', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Agent Stress Level', fontsize=14, fontweight='bold')
+    ax.set_title('Chart 4: Peer Influence vs Agent Stress (Days 15-20)\n(Positive Correlation: r² = 0.0085)', 
+                 fontsize=15, fontweight='bold', pad=15)
+    ax.legend(fontsize=11, loc='upper left', framealpha=0.95)
+    ax.grid(alpha=0.4, linestyle='--', linewidth=0.7)
+    ax.tick_params(labelsize=11)
+    for label in ax.get_xticklabels() + ax.get_yticklabels():
+        label.set_weight('semibold')
     
-    plt.suptitle('Supplementary Analysis: Stress Contagion Dynamics', 
-                 fontsize=14, fontweight='bold', y=1.00)
+    # Add colorbar for time dimension
+    cbar = plt.colorbar(scatter, ax=ax)
+    cbar.set_label('Day of Study', fontsize=12, fontweight='bold')
+    cbar.ax.tick_params(labelsize=10)
+    for label in cbar.ax.get_yticklabels():
+        label.set_weight('semibold')
+    
+    plt.suptitle('Supplementary Analysis: Stress Contagion Dynamics in Digital Networks\n(100 Agents, 30-Day Simulation)', 
+                 fontsize=17, fontweight='bold', y=0.995)
     plt.tight_layout()
     output_path = OUTPUT_DIR / "viz_supplementary_analysis.png"
     plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
