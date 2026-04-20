@@ -152,35 +152,42 @@ def visualize_distributions(df):
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
     axes = axes.flatten()
     
+    colors = ['#3B82F6', '#059669', '#F59E0B', '#DC2626']
+    
     for idx, col in enumerate(numerical_cols):
         if col in df.columns:
-            axes[idx].hist(df[col], bins=30, edgecolor='black', alpha=0.7)
-            axes[idx].set_xlabel(col, fontsize=10)
-            axes[idx].set_ylabel('Frequency', fontsize=10)
-            axes[idx].set_title(f'Distribution of {col}', fontsize=11, fontweight='bold')
-            axes[idx].grid(alpha=0.3)
+            axes[idx].hist(df[col], bins=30, edgecolor='black', alpha=0.8, color=colors[idx], linewidth=1.5)
+            axes[idx].set_xlabel(col, fontsize=12, fontweight='bold')
+            axes[idx].set_ylabel('Frequency', fontsize=12, fontweight='bold')
+            axes[idx].set_title(f'Distribution of {col}', fontsize=13, fontweight='bold', pad=10)
+            axes[idx].grid(True, alpha=0.4, linestyle='--')
+            axes[idx].tick_params(labelsize=10)
             
             # Add mean line
             mean_val = df[col].mean()
-            axes[idx].axvline(mean_val, color='red', linestyle='--', linewidth=2, label=f'Mean: {mean_val:.2f}')
-            axes[idx].legend()
+            axes[idx].axvline(mean_val, color='#EF4444', linestyle='--', linewidth=3, label=f'Mean: {mean_val:.1f}')
+            axes[idx].legend(fontsize=10, framealpha=0.95)
     
+    plt.suptitle('Data Distributions: Key Behavioral Metrics', fontsize=14, fontweight='bold', y=0.98)
     plt.tight_layout()
     output_path = OUTPUT_DIR / "distribution_plots.png"
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"✓ Saved distribution plots to {output_path}")
     plt.close()
     
     # Correlation heatmap
     numerical_data = df.select_dtypes(include=[np.number])
-    plt.figure(figsize=(12, 10))
+    plt.figure(figsize=(10, 8))
     correlation_matrix = numerical_data.corr()
     sns.heatmap(correlation_matrix, annot=True, fmt='.2f', cmap='coolwarm', center=0, 
-                square=True, linewidths=1, cbar_kws={"shrink": 0.8})
-    plt.title('Correlation Matrix of Numerical Features', fontsize=14, fontweight='bold')
+                square=True, linewidths=0.5, cbar_kws={"shrink": 0.8},
+                annot_kws={"size": 9})
+    plt.title('Correlation Matrix: Feature Relationships', fontsize=12, fontweight='bold', pad=10)
+    plt.xticks(fontsize=10, rotation=45, ha='right')
+    plt.yticks(fontsize=10)
     plt.tight_layout()
     output_path = OUTPUT_DIR / "correlation_heatmap.png"
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"✓ Saved correlation heatmap to {output_path}")
     plt.close()
 
