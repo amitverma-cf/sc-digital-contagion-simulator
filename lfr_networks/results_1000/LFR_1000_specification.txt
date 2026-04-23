@@ -1,0 +1,80 @@
+================================================================================
+LFR BENCHMARK NETWORK SPECIFICATION — LFR_1000
+================================================================================
+
+REFERENCE
+  Lancichinetti, Fortunato & Radicchi
+  'Benchmark graphs for testing community detection algorithms'
+  Physical Review E 78, 046110 (2008)
+
+WHY LFR INSTEAD OF ORIGINAL HOMOPHILY NETWORK
+--------------------------------------------------------------------------------
+  Original: fixed per-pair probabilities (p_same=0.15, p_diff=0.03)
+    → Poisson-like degree distribution, blurry community structure
+  LFR: power-law degree + power-law community sizes + exact μ control
+    → Matches real social network statistics, tight community separation
+
+LFR PARAMETERS
+--------------------------------------------------------------------------------
+  N (nodes)                   : 1000
+  gamma γ (degree exponent)   : 3.0
+  beta  β (community exponent): 1.5
+  mu    μ (mixing parameter)  : 0.1
+  Target avg degree           : 10
+
+REALISED NETWORK METRICS
+--------------------------------------------------------------------------------
+  n_nodes                               : 1000
+  n_edges                               : 5629
+  density                               : 0.0113
+  avg_degree                            : 11.2580
+  std_degree                            : 7.2810
+  min_degree                            : 5
+  max_degree                            : 77
+  is_connected                          : True
+  n_components                          : 1
+  largest_cc_size                       : 1000
+  avg_clustering                        : 0.2064
+  transitivity                          : 0.1801
+  diameter                              : 6
+  avg_shortest_path                     : 3.4954
+  n_communities                         : 22
+  assortativity_persona                 : 0.8002
+
+SIMULATION RESULTS (averaged over 5 runs)
+--------------------------------------------------------------------------------
+  Baseline:
+    final_mean_stress                  : 42.53
+    final_std_stress                   : 26.48
+    final_max_stress                   : 86.84
+    high_stress_agents                 : 428.80
+    peak_mean_usage                    : 307.42
+  Intervention (target top-5 influencers from day 10):
+    final_mean_stress                  : 42.14
+    final_std_stress                   : 26.48
+    final_max_stress                   : 86.84
+    high_stress_agents                 : 426.00
+    peak_mean_usage                    : 306.29
+
+TOP-5 INFLUENCERS
+--------------------------------------------------------------------------------
+  1. Agent  243  (Heavy User     )  deg= 77  score=0.1382
+  2. Agent  459  (Heavy User     )  deg= 74  score=0.1337
+  3. Agent  729  (Heavy User     )  deg= 74  score=0.1331
+  4. Agent  345  (Heavy User     )  deg= 67  score=0.1221
+  5. Agent  836  (Heavy User     )  deg= 36  score=0.0710
+
+
+UPDATED INTERVENTION (5% of nodes = 50 agents)
+--------------------------------------------------------------------------------
+  Intervention targets          : 50 agents (top-5% by influence score)
+  Selection method              : 0.4×degree + 0.3×betweenness + 0.3×eigenvector
+  Intervention day              : 10
+  Usage reduction factor        : 50%
+
+  Baseline final mean stress    : 42.53
+  Intervention final mean stress: 40.30
+  Stress reduction              : 2.23
+  High-stress agents (baseline) : 429
+  High-stress agents (interv.)  : 405
+  High-stress reduction         : 24 agents

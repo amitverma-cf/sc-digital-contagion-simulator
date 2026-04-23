@@ -1,0 +1,65 @@
+================================================================================
+LFR BENCHMARK NETWORK SPECIFICATION — LFR_100
+================================================================================
+
+REFERENCE
+  Lancichinetti, Fortunato & Radicchi
+  'Benchmark graphs for testing community detection algorithms'
+  Physical Review E 78, 046110 (2008)
+
+WHY LFR INSTEAD OF ORIGINAL HOMOPHILY NETWORK
+--------------------------------------------------------------------------------
+  Original: fixed per-pair probabilities (p_same=0.15, p_diff=0.03)
+    → Poisson-like degree distribution, blurry community structure
+  LFR: power-law degree + power-law community sizes + exact μ control
+    → Matches real social network statistics, tight community separation
+
+LFR PARAMETERS
+--------------------------------------------------------------------------------
+  N (nodes)                   : 100
+  gamma γ (degree exponent)   : 3.0
+  beta  β (community exponent): 1.5
+  mu    μ (mixing parameter)  : 0.1
+  Target avg degree           : 5
+
+REALISED NETWORK METRICS
+--------------------------------------------------------------------------------
+  n_nodes                               : 100
+  n_edges                               : 189
+  density                               : 0.0382
+  avg_degree                            : 3.7800
+  std_degree                            : 1.9057
+  min_degree                            : 2
+  max_degree                            : 15
+  is_connected                          : True
+  n_components                          : 1
+  largest_cc_size                       : 100
+  avg_clustering                        : 0.1972
+  transitivity                          : 0.1723
+  diameter                              : 16
+  avg_shortest_path                     : 5.4972
+  n_communities                         : 8
+  assortativity_persona                 : 0.9142
+
+SIMULATION RESULTS (averaged over 5 runs)
+--------------------------------------------------------------------------------
+  Baseline:
+    final_mean_stress                  : 42.71
+    final_std_stress                   : 27.71
+    final_max_stress                   : 90.64
+    high_stress_agents                 : 42.00
+    peak_mean_usage                    : 307.17
+  Intervention (target top-5 influencers from day 10):
+    final_mean_stress                  : 38.31
+    final_std_stress                   : 27.53
+    final_max_stress                   : 90.51
+    high_stress_agents                 : 37.20
+    peak_mean_usage                    : 287.37
+
+TOP-5 INFLUENCERS
+--------------------------------------------------------------------------------
+  1. Agent   57  (Minimalist     )  deg= 15  score=0.3235
+  2. Agent   10  (Digital Addict )  deg=  9  score=0.1791
+  3. Agent   99  (Digital Addict )  deg= 10  score=0.1502
+  4. Agent   24  (Digital Addict )  deg=  6  score=0.1198
+  5. Agent    2  (Active User    )  deg=  7  score=0.1138

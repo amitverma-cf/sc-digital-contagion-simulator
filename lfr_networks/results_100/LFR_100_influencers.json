@@ -1,0 +1,43 @@
+{
+  "network": "LFR_100",
+  "top_k": 5,
+  "influencer_ids": [
+    57,
+    10,
+    99,
+    24,
+    2
+  ],
+  "influencers": [
+    {
+      "agent_id": 57,
+      "persona": "Minimalist",
+      "degree": 15,
+      "influence_score": 0.32347755542790824
+    },
+    {
+      "agent_id": 10,
+      "persona": "Digital Addict",
+      "degree": 9,
+      "influence_score": 0.17908836764445357
+    },
+    {
+      "agent_id": 99,
+      "persona": "Digital Addict",
+      "degree": 10,
+      "influence_score": 0.15017366730929516
+    },
+    {
+      "agent_id": 24,
+      "persona": "Digital Addict",
+      "degree": 6,
+      "influence_score": 0.11984759848875756
+    },
+    {
+      "agent_id": 2,
+      "persona": "Active User",
+      "degree": 7,
+      "influence_score": 0.11375093633248648
+    }
+  ]
+}
