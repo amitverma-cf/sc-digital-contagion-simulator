@@ -1,0 +1,359 @@
+{
+  "network": "LFR_1000",
+  "top_k": 50,
+  "intervention_pct": "5%",
+  "influencer_ids": [
+    243,
+    459,
+    729,
+    345,
+    836,
+    984,
+    751,
+    891,
+    543,
+    734,
+    47,
+    126,
+    534,
+    20,
+    204,
+    10,
+    336,
+    37,
+    196,
+    575,
+    406,
+    335,
+    245,
+    274,
+    814,
+    276,
+    640,
+    220,
+    721,
+    31,
+    579,
+    235,
+    211,
+    854,
+    707,
+    69,
+    224,
+    990,
+    781,
+    208,
+    188,
+    596,
+    351,
+    773,
+    952,
+    859,
+    93,
+    324,
+    789,
+    307
+  ],
+  "influencers": [
+    {
+      "agent_id": 243,
+      "persona": "Heavy User",
+      "degree": 77,
+      "influence_score": 0.13815901476684805
+    },
+    {
+      "agent_id": 459,
+      "persona": "Heavy User",
+      "degree": 74,
+      "influence_score": 0.13374119267559265
+    },
+    {
+      "agent_id": 729,
+      "persona": "Heavy User",
+      "degree": 74,
+      "influence_score": 0.13312162228351596
+    },
+    {
+      "agent_id": 345,
+      "persona": "Heavy User",
+      "degree": 67,
+      "influence_score": 0.1221417057752924
+    },
+    {
+      "agent_id": 836,
+      "persona": "Heavy User",
+      "degree": 36,
+      "influence_score": 0.07103208088269211
+    },
+    {
+      "agent_id": 984,
+      "persona": "Heavy User",
+      "degree": 26,
+      "influence_score": 0.053706997405071386
+    },
+    {
+      "agent_id": 751,
+      "persona": "Heavy User",
+      "degree": 25,
+      "influence_score": 0.053338058811322336
+    },
+    {
+      "agent_id": 891,
+      "persona": "Heavy User",
+      "degree": 22,
+      "influence_score": 0.04891876096512912
+    },
+    {
+      "agent_id": 543,
+      "persona": "Heavy User",
+      "degree": 21,
+      "influence_score": 0.048292029371664984
+    },
+    {
+      "agent_id": 734,
+      "persona": "Heavy User",
+      "degree": 23,
+      "influence_score": 0.04793281683252251
+    },
+    {
+      "agent_id": 47,
+      "persona": "Heavy User",
+      "degree": 21,
+      "influence_score": 0.04715196486979103
+    },
+    {
+      "agent_id": 126,
+      "persona": "Active User",
+      "degree": 72,
+      "influence_score": 0.046309622878682725
+    },
+    {
+      "agent_id": 534,
+      "persona": "Heavy User",
+      "degree": 20,
+      "influence_score": 0.04414072639162653
+    },
+    {
+      "agent_id": 20,
+      "persona": "Heavy User",
+      "degree": 21,
+      "influence_score": 0.043561633529711305
+    },
+    {
+      "agent_id": 204,
+      "persona": "Heavy User",
+      "degree": 21,
+      "influence_score": 0.04182696375811077
+    },
+    {
+      "agent_id": 10,
+      "persona": "Heavy User",
+      "degree": 18,
+      "influence_score": 0.041400395354920724
+    },
+    {
+      "agent_id": 336,
+      "persona": "Heavy User",
+      "degree": 18,
+      "influence_score": 0.04080451560985619
+    },
+    {
+      "agent_id": 37,
+      "persona": "Minimalist",
+      "degree": 64,
+      "influence_score": 0.04078371241673801
+    },
+    {
+      "agent_id": 196,
+      "persona": "Heavy User",
+      "degree": 17,
+      "influence_score": 0.040296005106654605
+    },
+    {
+      "agent_id": 575,
+      "persona": "Heavy User",
+      "degree": 19,
+      "influence_score": 0.040188719701428094
+    },
+    {
+      "agent_id": 406,
+      "persona": "Heavy User",
+      "degree": 19,
+      "influence_score": 0.03930833357997357
+    },
+    {
+      "agent_id": 335,
+      "persona": "Heavy User",
+      "degree": 17,
+      "influence_score": 0.038761069084800155
+    },
+    {
+      "agent_id": 245,
+      "persona": "Heavy User",
+      "degree": 16,
+      "influence_score": 0.038419374754564056
+    },
+    {
+      "agent_id": 274,
+      "persona": "Heavy User",
+      "degree": 16,
+      "influence_score": 0.038012997309549115
+    },
+    {
+      "agent_id": 814,
+      "persona": "Heavy User",
+      "degree": 18,
+      "influence_score": 0.03771222190344857
+    },
+    {
+      "agent_id": 276,
+      "persona": "Heavy User",
+      "degree": 14,
+      "influence_score": 0.037421567055872726
+    },
+    {
+      "agent_id": 640,
+      "persona": "Heavy User",
+      "degree": 14,
+      "influence_score": 0.03671544141072226
+    },
+    {
+      "agent_id": 220,
+      "persona": "Heavy User",
+      "degree": 16,
+      "influence_score": 0.036586490154858695
+    },
+    {
+      "agent_id": 721,
+      "persona": "Heavy User",
+      "degree": 16,
+      "influence_score": 0.036577052485371485
+    },
+    {
+      "agent_id": 31,
+      "persona": "Heavy User",
+      "degree": 14,
+      "influence_score": 0.0361124776348119
+    },
+    {
+      "agent_id": 579,
+      "persona": "Heavy User",
+      "degree": 14,
+      "influence_score": 0.034940154073603104
+    },
+    {
+      "agent_id": 235,
+      "persona": "Heavy User",
+      "degree": 13,
+      "influence_score": 0.034502195263052246
+    },
+    {
+      "agent_id": 211,
+      "persona": "Heavy User",
+      "degree": 14,
+      "influence_score": 0.033434540216186456
+    },
+    {
+      "agent_id": 854,
+      "persona": "Heavy User",
+      "degree": 13,
+      "influence_score": 0.03309413171606878
+    },
+    {
+      "agent_id": 707,
+      "persona": "Heavy User",
+      "degree": 15,
+      "influence_score": 0.032907581822352525
+    },
+    {
+      "agent_id": 69,
+      "persona": "Heavy User",
+      "degree": 13,
+      "influence_score": 0.032629963694192105
+    },
+    {
+      "agent_id": 224,
+      "persona": "Heavy User",
+      "degree": 14,
+      "influence_score": 0.03262127108237964
+    },
+    {
+      "agent_id": 990,
+      "persona": "Heavy User",
+      "degree": 12,
+      "influence_score": 0.03210345972554182
+    },
+    {
+      "agent_id": 781,
+      "persona": "Heavy User",
+      "degree": 12,
+      "influence_score": 0.031874062648751075
+    },
+    {
+      "agent_id": 208,
+      "persona": "Heavy User",
+      "degree": 11,
+      "influence_score": 0.03136049254514491
+    },
+    {
+      "agent_id": 188,
+      "persona": "Heavy User",
+      "degree": 51,
+      "influence_score": 0.031208316589540874
+    },
+    {
+      "agent_id": 596,
+      "persona": "Heavy User",
+      "degree": 13,
+      "influence_score": 0.03119173481027384
+    },
+    {
+      "agent_id": 351,
+      "persona": "Heavy User",
+      "degree": 10,
+      "influence_score": 0.03103559408431825
+    },
+    {
+      "agent_id": 773,
+      "persona": "Heavy User",
+      "degree": 13,
+      "influence_score": 0.030759582721922637
+    },
+    {
+      "agent_id": 952,
+      "persona": "Heavy User",
+      "degree": 11,
+      "influence_score": 0.030437329537011545
+    },
+    {
+      "agent_id": 859,
+      "persona": "Heavy User",
+      "degree": 12,
+      "influence_score": 0.030279051144958297
+    },
+    {
+      "agent_id": 93,
+      "persona": "Heavy User",
+      "degree": 11,
+      "influence_score": 0.029782092814769276
+    },
+    {
+      "agent_id": 324,
+      "persona": "Heavy User",
+      "degree": 9,
+      "influence_score": 0.02944912135757707
+    },
+    {
+      "agent_id": 789,
+      "persona": "Heavy User",
+      "degree": 11,
+      "influence_score": 0.029394734997891775
+    },
+    {
+      "agent_id": 307,
+      "persona": "Heavy User",
+      "degree": 11,
+      "influence_score": 0.029374206755518113
+    }
+  ]
+}

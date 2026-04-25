@@ -1,0 +1,38 @@
+{
+  "burnout_threshold": 80,
+  "high_stress_threshold": 60,
+  "mild_stress_threshold": 40,
+  "baseline": {
+    "peak_burnout_count": 187,
+    "peak_burnout_day": 0,
+    "final_burnout_count": 20,
+    "final_high_stress": 419,
+    "final_mild_stress": 481,
+    "burnout_by_persona": {
+      "Minimalist": 5,
+      "Moderate User": 2,
+      "Active User": 6,
+      "Heavy User": 5,
+      "Digital Addict": 2
+    }
+  },
+  "intervention": {
+    "peak_burnout_count": 187,
+    "peak_burnout_day": 0,
+    "final_burnout_count": 15,
+    "final_high_stress": 396,
+    "final_mild_stress": 455,
+    "burnout_by_persona": {
+      "Minimalist": 5,
+      "Moderate User": 2,
+      "Active User": 5,
+      "Heavy User": 2,
+      "Digital Addict": 1
+    }
+  },
+  "reduction": {
+    "burnout_count": 5,
+    "high_stress_count": 23,
+    "peak_burnout_reduction": 0
+  }
+}

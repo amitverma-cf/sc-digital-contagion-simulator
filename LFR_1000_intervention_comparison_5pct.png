@@ -1,0 +1,43 @@
+{
+  "network": "LFR_1000",
+  "top_k": 5,
+  "influencer_ids": [
+    243,
+    459,
+    729,
+    345,
+    836
+  ],
+  "influencers": [
+    {
+      "agent_id": 243,
+      "persona": "Heavy User",
+      "degree": 77,
+      "influence_score": 0.13815901476684805
+    },
+    {
+      "agent_id": 459,
+      "persona": "Heavy User",
+      "degree": 74,
+      "influence_score": 0.13374119267559265
+    },
+    {
+      "agent_id": 729,
+      "persona": "Heavy User",
+      "degree": 74,
+      "influence_score": 0.13312162228351596
+    },
+    {
+      "agent_id": 345,
+      "persona": "Heavy User",
+      "degree": 67,
+      "influence_score": 0.1221417057752924
+    },
+    {
+      "agent_id": 836,
+      "persona": "Heavy User",
+      "degree": 36,
+      "influence_score": 0.07103208088269211
+    }
+  ]
+}
