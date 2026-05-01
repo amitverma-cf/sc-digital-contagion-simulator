@@ -8,10 +8,10 @@ Description: Stochastic graph where connection probability depends on
              persona similarity (homophily principle)
 
 PARAMETERS:
-  • Same persona connection probability: 0.15
-  • Different persona connection probability: 0.03
-  • Bridge connection probability: 0.01
-  • Degree constraints: [2, 15]
+  â€¢ Same persona connection probability: 0.15
+  â€¢ Different persona connection probability: 0.03
+  â€¢ Bridge connection probability: 0.01
+  â€¢ Degree constraints: [2, 15]
 
 NETWORK METRICS:
 --------------------------------------------------------------------------------

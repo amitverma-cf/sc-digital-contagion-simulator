@@ -189,38 +189,39 @@ engine2 = TemporalEngine(agents_df, network, params=params_base, random_seed=42)
 results_random = engine2.simulate(intervention_day=10, intervention_agents=random_5)
 
 # Plot
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 3))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
 # Stress comparison
 stress_inf = results_influencer.groupby('day')['stress'].mean()
 stress_rnd = results_random.groupby('day')['stress'].mean()
 
-ax1.plot(stress_inf.index+1, stress_inf, label='Influencer Targeting', color='#3B82F6', linewidth=2)
-ax1.plot(stress_rnd.index+1, stress_rnd, label='Random Targeting', color='#F59E0B', linewidth=2)
-ax1.axvline(x=10, color='red', linestyle=':', alpha=0.5, linewidth=1)
-ax1.set_xlabel('Day', fontsize=9)
-ax1.set_ylabel('Mean Stress', fontsize=9)
-ax1.set_title('Targeting Paradox: Mean Stress', fontsize=10, fontweight='bold')
-ax1.legend(fontsize=7)
-ax1.grid(True, alpha=0.3)
-ax1.tick_params(labelsize=8)
+ax1.plot(stress_inf.index+1, stress_inf, label='Influencer Targeting', color='#3B82F6', linewidth=3)
+ax1.plot(stress_rnd.index+1, stress_rnd, label='Random Targeting', color='#F59E0B', linewidth=3)
+ax1.axvline(x=10, color='#EF4444', linestyle='--', alpha=0.7, linewidth=2, label='Intervention Start')
+ax1.set_xlabel('Day', fontsize=12, fontweight='bold')
+ax1.set_ylabel('Mean Stress Level', fontsize=12, fontweight='bold')
+ax1.set_title('Targeting Paradox: Mean Stress', fontsize=13, fontweight='bold', pad=10)
+ax1.legend(fontsize=9, loc='upper right', framealpha=0.95)
+ax1.grid(True, alpha=0.4, linestyle='--')
+ax1.tick_params(labelsize=10)
 
 # Burnout comparison
 burnout_inf = results_influencer.groupby('day').apply(lambda x: (x['stress'] > 80).sum())
 burnout_rnd = results_random.groupby('day').apply(lambda x: (x['stress'] > 80).sum())
 
-ax2.plot(burnout_inf.index+1, burnout_inf, label='Influencer Targeting', color='#3B82F6', linewidth=2)
-ax2.plot(burnout_rnd.index+1, burnout_rnd, label='Random Targeting', color='#F59E0B', linewidth=2)
-ax2.axvline(x=10, color='red', linestyle=':', alpha=0.5, linewidth=1)
-ax2.set_xlabel('Day', fontsize=9)
-ax2.set_ylabel('Burnout Count', fontsize=9)
-ax2.set_title('Targeting Paradox: Burnout', fontsize=10, fontweight='bold')
-ax2.legend(fontsize=7)
-ax2.grid(True, alpha=0.3)
-ax2.tick_params(labelsize=8)
+ax2.plot(burnout_inf.index+1, burnout_inf, label='Influencer Targeting', color='#3B82F6', linewidth=3)
+ax2.plot(burnout_rnd.index+1, burnout_rnd, label='Random Targeting', color='#F59E0B', linewidth=3)
+ax2.axvline(x=10, color='#EF4444', linestyle='--', alpha=0.7, linewidth=2, label='Intervention Start')
+ax2.set_xlabel('Day', fontsize=12, fontweight='bold')
+ax2.set_ylabel('Burnout Count', fontsize=12, fontweight='bold')
+ax2.set_title('Targeting Paradox: Burnout', fontsize=13, fontweight='bold', pad=10)
+ax2.legend(fontsize=9, loc='upper right', framealpha=0.95)
+ax2.grid(True, alpha=0.4, linestyle='--')
+ax2.tick_params(labelsize=10)
 
+plt.suptitle('Scenario 1: Targeting Paradox\n(Influencer vs Random Intervention)', fontsize=14, fontweight='bold', y=1.02)
 plt.tight_layout()
-plt.savefig(OUTPUT_DIR / "scenario_targeting_paradox.png", dpi=150, bbox_inches='tight')
+plt.savefig(OUTPUT_DIR / "scenario_targeting_paradox.png", dpi=300, bbox_inches='tight', facecolor='white')
 print(f"✓ Saved: scenario_targeting_paradox.png")
 plt.close()
 
@@ -243,36 +244,38 @@ engine4 = TemporalEngine(agents_df, network, params=params_high_beta, random_see
 results_beta_high = engine4.simulate(intervention_day=10, intervention_agents=top_5_influencers)
 
 # Plot
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 3))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4.5))
 
 stress_low = results_beta_low.groupby('day')['stress'].mean()
 stress_high = results_beta_high.groupby('day')['stress'].mean()
 
-ax1.plot(stress_low.index+1, stress_low, label='β=0.3 (Baseline)', color='#6B7280', linewidth=2)
-ax1.plot(stress_high.index+1, stress_high, label='β=0.8 (Echo Chamber)', color='#DC2626', linewidth=2)
-ax1.axvline(x=10, color='red', linestyle=':', alpha=0.5, linewidth=1)
-ax1.set_xlabel('Day', fontsize=9)
-ax1.set_ylabel('Mean Stress', fontsize=9)
-ax1.set_title('Echo Chamber: Peer Influence Impact', fontsize=10, fontweight='bold')
-ax1.legend(fontsize=7)
-ax1.grid(True, alpha=0.3)
-ax1.tick_params(labelsize=8)
+ax1.plot(stress_low.index+1, stress_low, label='β=0.3 (Baseline)', color='#6B7280', linewidth=3)
+ax1.plot(stress_high.index+1, stress_high, label='β=0.8 (Echo Chamber)', color='#DC2626', linewidth=3)
+ax1.axvline(x=10, color='#EF4444', linestyle='--', alpha=0.7, linewidth=2, label='Intervention Start')
+ax1.set_xlabel('Day', fontsize=12, fontweight='bold')
+ax1.set_ylabel('Mean Stress Level', fontsize=12, fontweight='bold')
+ax1.set_title('Echo Chamber: Peer Influence Impact', fontsize=13, fontweight='bold', pad=10)
+ax1.legend(fontsize=9, loc='upper left', framealpha=0.95)
+ax1.grid(True, alpha=0.4, linestyle='--')
+ax1.tick_params(labelsize=10)
+ax1.set_ylim(0, 100)
 
 burnout_low = results_beta_low.groupby('day').apply(lambda x: (x['stress'] > 80).sum())
 burnout_high = results_beta_high.groupby('day').apply(lambda x: (x['stress'] > 80).sum())
 
-ax2.plot(burnout_low.index+1, burnout_low, label='β=0.3', color='#6B7280', linewidth=2)
-ax2.plot(burnout_high.index+1, burnout_high, label='β=0.8', color='#DC2626', linewidth=2)
-ax2.axvline(x=10, color='red', linestyle=':', alpha=0.5, linewidth=1)
-ax2.set_xlabel('Day', fontsize=9)
-ax2.set_ylabel('Burnout Count', fontsize=9)
-ax2.set_title('Echo Chamber: Burnout Elimination', fontsize=10, fontweight='bold')
-ax2.legend(fontsize=7)
-ax2.grid(True, alpha=0.3)
-ax2.tick_params(labelsize=8)
+ax2.plot(burnout_low.index+1, burnout_low, label='β=0.3 (Baseline)', color='#6B7280', linewidth=3)
+ax2.plot(burnout_high.index+1, burnout_high, label='β=0.8 (Echo Chamber)', color='#DC2626', linewidth=3)
+ax2.axvline(x=10, color='#EF4444', linestyle='--', alpha=0.7, linewidth=2, label='Intervention Start')
+ax2.set_xlabel('Day', fontsize=12, fontweight='bold')
+ax2.set_ylabel('Burnout Count', fontsize=12, fontweight='bold')
+ax2.set_title('Echo Chamber: Burnout Elimination', fontsize=13, fontweight='bold', pad=10)
+ax2.legend(fontsize=9, loc='upper left', framealpha=0.95)
+ax2.grid(True, alpha=0.4, linestyle='--')
+ax2.tick_params(labelsize=10)
 
+plt.suptitle('Scenario 2: Echo Chamber Effect\n(Peer Influence Strength β)', fontsize=14, fontweight='bold', y=1.02)
 plt.tight_layout()
-plt.savefig(OUTPUT_DIR / "scenario_echo_chamber.png", dpi=150, bbox_inches='tight')
+plt.savefig(OUTPUT_DIR / "scenario_echo_chamber.png", dpi=300, bbox_inches='tight', facecolor='white')
 print(f"✓ Saved: scenario_echo_chamber.png")
 plt.close()
 
@@ -292,14 +295,14 @@ engine6 = TemporalEngine(agents_df, network, params=params_base, random_seed=42)
 results_universal = engine6.simulate(intervention_day=10, intervention_agents=all_agents)
 
 # Plot
-fig, ax = plt.subplots(1, 1, figsize=(7, 3.5))
+fig, ax = plt.subplots(1, 1, figsize=(8, 4.5))
 
 stress_targeted = results_targeted.groupby('day')['stress'].mean()
 stress_universal = results_universal.groupby('day')['stress'].mean()
 
-ax.plot(stress_targeted.index+1, stress_targeted, label='Targeted (5 influencers)', color='#3B82F6', linewidth=2)
-ax.plot(stress_universal.index+1, stress_universal, label='Universal (all 100 agents)', color='#059669', linewidth=2)
-ax.axvline(x=10, color='red', linestyle=':', alpha=0.5, linewidth=1)
+ax.plot(stress_targeted.index+1, stress_targeted, label='Targeted (5 influencers)', color='#3B82F6', linewidth=3)
+ax.plot(stress_universal.index+1, stress_universal, label='Universal (all 100 agents)', color='#059669', linewidth=3)
+ax.axvline(x=10, color='#EF4444', linestyle='--', alpha=0.7, linewidth=2, label='Intervention Start')
 
 # Add annotation for 5x better
 final_diff = stress_targeted.iloc[-1] - stress_universal.iloc[-1]
@@ -307,18 +310,20 @@ ax.annotate(f'5× Better\n({final_diff:.1f} pts)',
             xy=(30, stress_universal.iloc[-1]), 
             xytext=(24, 30),
             arrowprops=dict(arrowstyle='->', color='#059669', lw=1.5),
-            fontsize=8, color='#059669', fontweight='bold',
+            fontsize=10, color='#059669', fontweight='bold',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='#D1FAE5', edgecolor='#059669'))
 
-ax.set_xlabel('Day', fontsize=10)
-ax.set_ylabel('Mean Stress', fontsize=10)
-ax.set_title('Universal vs Targeted Intervention', fontsize=11, fontweight='bold')
-ax.legend(fontsize=8)
-ax.grid(True, alpha=0.3)
-ax.tick_params(labelsize=9)
+ax.set_xlabel('Day', fontsize=12, fontweight='bold')
+ax.set_ylabel('Mean Stress Level', fontsize=12, fontweight='bold')
+ax.set_title('Universal vs Targeted Intervention', fontsize=13, fontweight='bold', pad=10)
+ax.legend(fontsize=9, loc='upper right', framealpha=0.95)
+ax.grid(True, alpha=0.4, linestyle='--')
+ax.tick_params(labelsize=10)
+ax.set_ylim(0, 100)
 
+plt.suptitle('Scenario 3: Universal vs Targeted\n(Intervention Scale)', fontsize=14, fontweight='bold', y=1.02)
 plt.tight_layout()
-plt.savefig(OUTPUT_DIR / "scenario_universal_vs_targeted.png", dpi=150, bbox_inches='tight')
+plt.savefig(OUTPUT_DIR / "scenario_universal_vs_targeted.png", dpi=300, bbox_inches='tight', facecolor='white')
 print(f"✓ Saved: scenario_universal_vs_targeted.png")
 plt.close()
 
@@ -341,37 +346,62 @@ engine9 = TemporalEngine(agents_df, network, params=params_base, random_seed=42)
 results_none = engine9.simulate(intervention_day=None, intervention_agents=None)
 
 # Plot
-fig, ax = plt.subplots(1, 1, figsize=(7, 3.5))
+fig, ax = plt.subplots(1, 1, figsize=(12, 6))
 
 stress_early = results_early.groupby('day')['stress'].mean()
 stress_late = results_late.groupby('day')['stress'].mean()
 stress_none = results_none.groupby('day')['stress'].mean()
 
-ax.plot(stress_none.index+1, stress_none, label='No Intervention', color='#6B7280', linewidth=2, linestyle='--')
-ax.plot(stress_early.index+1, stress_early, label='Early (Day 10)', color='#3B82F6', linewidth=2)
-ax.plot(stress_late.index+1, stress_late, label='Late (Day 25)', color='#F59E0B', linewidth=2)
-ax.axvline(x=10, color='#3B82F6', linestyle=':', alpha=0.5, linewidth=1, label='Early Start')
-ax.axvline(x=25, color='#F59E0B', linestyle=':', alpha=0.5, linewidth=1, label='Late Start')
+# Plot all three lines on single axis with better spacing
+ax.plot(stress_none.index+1, stress_none, label='No Intervention', color='#6B7280', linewidth=3, linestyle=':', alpha=0.8, marker='s', markersize=4, markevery=5)
+ax.plot(stress_early.index+1, stress_early, label='Early Intervention (Day 10)', color='#3B82F6', linewidth=3, marker='o', markersize=4, markevery=5)
+ax.plot(stress_late.index+1, stress_late, label='Late Intervention (Day 25)', color='#F59E0B', linewidth=3, marker='^', markersize=4, markevery=5)
+
+# Add vertical lines for intervention timing
+ax.axvline(x=10, color='#3B82F6', linestyle='--', alpha=0.7, linewidth=2)
+ax.axvline(x=25, color='#F59E0B', linestyle='--', alpha=0.7, linewidth=2)
+
+# Add annotations for intervention points
+ax.annotate('Early\nIntervention\nStarts', xy=(10, 40), xytext=(8, 50),
+            arrowprops=dict(arrowstyle='->', color='#3B82F6', lw=1.5),
+            fontsize=9, color='#3B82F6', fontweight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='#DBEAFE', edgecolor='#3B82F6'))
+
+ax.annotate('Late\nIntervention\nStarts', xy=(25, 60), xytext=(20, 70),
+            arrowprops=dict(arrowstyle='->', color='#F59E0B', lw=1.5),
+            fontsize=9, color='#F59E0B', fontweight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='#FEF3C7', edgecolor='#F59E0B'))
+
+ax.set_xlabel('Day', fontsize=12, fontweight='bold')
+ax.set_ylabel('Mean Stress Level', fontsize=12, fontweight='bold')
+ax.set_title('Intervention Timing: Early vs Late Intervention', fontsize=14, fontweight='bold', pad=10)
+ax.legend(fontsize=10, framealpha=0.95, loc='upper left')
+ax.grid(True, alpha=0.4, linestyle='--')
+ax.tick_params(labelsize=10)
+ax.set_ylim(0, 100)
+ax.set_xlim(1, 30)
 
 # Add effectiveness annotation
 late_reduction = stress_none.iloc[-1] - stress_late.iloc[-1]
-late_pct = (late_reduction / stress_none.iloc[-1]) * 100
-ax.annotate(f'Still 7% effective\n({late_reduction:.1f} pts)', 
+early_reduction = stress_none.iloc[-1] - stress_early.iloc[-1]
+
+ax.annotate(f'Late intervention still\n{late_reduction/stress_none.iloc[-1]*100:.0f}% effective\n({late_reduction:.1f} pts reduction)', 
             xy=(30, stress_late.iloc[-1]), 
-            xytext=(20, 48),
+            xytext=(25, 70),
             arrowprops=dict(arrowstyle='->', color='#F59E0B', lw=1.5),
-            fontsize=8, color='#F59E0B', fontweight='bold',
+            fontsize=9, color='#F59E0B', fontweight='bold',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='#FEF3C7', edgecolor='#F59E0B'))
 
-ax.set_xlabel('Day', fontsize=10)
-ax.set_ylabel('Mean Stress', fontsize=10)
-ax.set_title('Intervention Timing: Early vs Late', fontsize=11, fontweight='bold')
-ax.legend(fontsize=7, loc='upper left')
-ax.grid(True, alpha=0.3)
-ax.tick_params(labelsize=9)
+ax.annotate(f'Early intervention\n{early_reduction/stress_none.iloc[-1]*100:.0f}% effective\n({early_reduction:.1f} pts reduction)', 
+            xy=(30, stress_early.iloc[-1]), 
+            xytext=(15, 30),
+            arrowprops=dict(arrowstyle='->', color='#3B82F6', lw=1.5),
+            fontsize=9, color='#3B82F6', fontweight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='#DBEAFE', edgecolor='#3B82F6'))
 
+plt.suptitle('Scenario 4: Intervention Timing\n(Early vs Late Intervention)', fontsize=14, fontweight='bold', y=0.98)
 plt.tight_layout()
-plt.savefig(OUTPUT_DIR / "scenario_intervention_timing.png", dpi=150, bbox_inches='tight')
+plt.savefig(OUTPUT_DIR / "scenario_intervention_timing.png", dpi=300, bbox_inches='tight', facecolor='white')
 print(f"✓ Saved: scenario_intervention_timing.png")
 plt.close()
 

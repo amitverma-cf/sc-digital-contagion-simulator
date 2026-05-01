@@ -10,32 +10,32 @@ NUMERICAL STATISTICS
 --------------------------------------------------------------------------------
 
 App Usage Time (min/day):
-  Mean ± Std: 271.13 ± 177.20
+  Mean Â± Std: 271.13 Â± 177.20
   Min/Max: 30.00 / 598.00
   Quartiles: Q1=113.25, Q2=227.50, Q3=434.25
 
 Screen On Time (hours/day):
-  Mean ± Std: 5.27 ± 3.07
+  Mean Â± Std: 5.27 Â± 3.07
   Min/Max: 1.00 / 12.00
   Quartiles: Q1=2.50, Q2=4.90, Q3=7.40
 
 Battery Drain (mAh/day):
-  Mean ± Std: 1525.16 ± 819.14
+  Mean Â± Std: 1525.16 Â± 819.14
   Min/Max: 302.00 / 2993.00
   Quartiles: Q1=722.25, Q2=1502.50, Q3=2229.50
 
 Number of Apps Installed:
-  Mean ± Std: 50.68 ± 26.94
+  Mean Â± Std: 50.68 Â± 26.94
   Min/Max: 10.00 / 99.00
   Quartiles: Q1=26.00, Q2=49.00, Q3=74.00
 
 Data Usage (MB/day):
-  Mean ± Std: 929.74 ± 640.45
+  Mean Â± Std: 929.74 Â± 640.45
   Min/Max: 102.00 / 2497.00
   Quartiles: Q1=373.00, Q2=823.50, Q3=1341.00
 
 Age:
-  Mean ± Std: 38.48 ± 12.01
+  Mean Â± Std: 38.48 Â± 12.01
   Min/Max: 18.00 / 59.00
   Quartiles: Q1=28.00, Q2=38.00, Q3=49.00
 
