@@ -1,0 +1,56 @@
+[
+  {
+    "label": "results_100",
+    "summary": [
+      {
+        "scenario": "Baseline",
+        "peak_stress_1_30_mean": 79.98682337666371,
+        "peak_stress_1_30_std": 0.28957065715584884,
+        "peak_burnout_1_30_mean": 0.4666666666666667,
+        "peak_burnout_1_30_std": 0.5074162634049248
+      },
+      {
+        "scenario": "Intervention",
+        "peak_stress_1_30_mean": 79.97266036642847,
+        "peak_stress_1_30_std": 0.29032766982597863,
+        "peak_burnout_1_30_mean": 0.4666666666666667,
+        "peak_burnout_1_30_std": 0.5074162634049248
+      }
+    ],
+    "paired_difference_summary": {
+      "peak_stress_1_30_diff_mean": 0.014163010235224741,
+      "peak_stress_1_30_diff_std": 0.008772501687068177,
+      "peak_burnout_1_30_diff_mean": 0.0,
+      "peak_burnout_1_30_diff_std": 0.0,
+      "day_of_peak_stress_1_30_diff_mean": 0.0,
+      "day_of_peak_burnout_1_30_diff_mean": -0.03333333333333333
+    }
+  },
+  {
+    "label": "results_1000",
+    "summary": [
+      {
+        "scenario": "Baseline",
+        "peak_stress_1_30_mean": 80.35718717393577,
+        "peak_stress_1_30_std": 1.3287112265617573,
+        "peak_burnout_1_30_mean": 0.7,
+        "peak_burnout_1_30_std": 0.48304589153964794
+      },
+      {
+        "scenario": "Intervention",
+        "peak_stress_1_30_mean": 80.35718717393577,
+        "peak_stress_1_30_std": 1.3287112265617573,
+        "peak_burnout_1_30_mean": 0.7,
+        "peak_burnout_1_30_std": 0.48304589153964794
+      }
+    ],
+    "paired_difference_summary": {
+      "peak_stress_1_30_diff_mean": 0.0,
+      "peak_stress_1_30_diff_std": 0.0,
+      "peak_burnout_1_30_diff_mean": 0.0,
+      "peak_burnout_1_30_diff_std": 0.0,
+      "day_of_peak_stress_1_30_diff_mean": 0.0,
+      "day_of_peak_burnout_1_30_diff_mean": 0.0
+    }
+  }
+]

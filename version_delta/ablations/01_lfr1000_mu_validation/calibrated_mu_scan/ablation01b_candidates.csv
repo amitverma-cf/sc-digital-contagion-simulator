@@ -1,0 +1,2 @@
+configured_mu,seed,status,actual_mu,mean_degree,n_edges,connected_components,n_communities,clustering_coefficient
+0.065,42,accepted,0.0722809250051206,10.876,5438,1,22,0.2730300763966001
